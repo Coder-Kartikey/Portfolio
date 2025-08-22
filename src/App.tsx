@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -7,11 +7,14 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ProjectDetail from './components/ProjectDetails';
 
 function App() {
+  const [activeSection, setActiveSection] = useState('home');
+
   return (
-    <div className="App min-h-screen bg-gray-900 text-white overflow-x-hidden">
-      <Header />
+    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+      <Header activeSection={activeSection} />
       <main>
         <section id='home'>
           <Hero />
