@@ -13,7 +13,21 @@ function App() {
     <div className="App min-h-screen bg-gray-900 text-white overflow-x-hidden">
       <Header />
       <main>
-
+        <section id='home'>
+          <Hero />
+        </section>
+        <section id='about'>
+          <About />
+        </section>
+        <section id='skills'>
+          <Skills />
+        </section>
+        <section id='projects'>
+          <Projects />
+        </section>
+        <section id='contact'>
+          <Contact />
+        </section>
       </main>
       <Footer />
     </div>
