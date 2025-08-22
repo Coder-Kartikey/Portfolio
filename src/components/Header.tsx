@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import { Menu, X, FileText } from 'lucide-react';
-import logoImage from '../assets/images/image.png';
+import logoImage from '../assets/images/logo-image.png';
 
 interface HeaderProps {
   activeSection: string;
