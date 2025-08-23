@@ -49,7 +49,7 @@ export default function Footer() {
             className="md:col-span-2"
           >
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center overflow-hidden p-1">
+              <div className="w-10 h-10 bg-blue-500/30 rounded-lg flex items-center justify-center overflow-hidden p-1">
                 <img
                   src={logoImage}
                   alt="CoderKP Logo"
