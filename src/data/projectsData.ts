@@ -41,14 +41,14 @@ export const projectsData: Record<number, ProjectData> = {
     previewImages: [
       'https://images.unsplash.com/photo-1725798451557-fc60db3eb6a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGF0JTIwYXBwbGljYXRpb24lMjBpbnRlcmZhY2UlMjBtb2JpbGV8ZW58MXx8fHwxNzU1Nzg0OTY0fDA&ixlib=rb-4.1.0&q=80&w=1080',
       'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&h=600&fit=crop'
+      // 'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&h=600&fit=crop'
     ],
     // animatedPreview: 'https://images.unsplash.com/photo-1618422168439-4b03d3a05b15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjBhbmltYXRpb24lMjBzY3JlZW58ZW58MXx8fHwxNzU1Nzg3MTg0fDA&ixlib=rb-4.1.0&q=80&w=1080',
     animatedPreview: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXd0anR5OHppM3l1Zzd3aGo3MGVncXQ1MWJjeXY5cDhzcWo4YmJ0YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT8qBsOjMOcdeGJIU8/giphy.gif',
     tags: ['React', 'Node.js', 'OpenAI', 'Socket.io', 'MongoDB', 'JWT', 'Redis'],
     category: 'ai',
     github: 'https://github.com/coderkp',
-    live: 'https://demo.example.com',
+    live: 'https://wonderlust-o9ym.onrender.com/',
     icon: Brain,
     timeline: '3 months',
     team: 'Solo Project',
@@ -107,14 +107,14 @@ export const projectsData: Record<number, ProjectData> = {
     previewImages: [
       'https://images.unsplash.com/photo-1629963918958-1b62cfe3fe92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXx8fHwxNzU1NjkyODYxfDA&ixlib=rb-4.1.0&q=80&w=1080',
       'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop'
+      // 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop'
     ],
     // animatedPreview: 'https://images.unsplash.com/photo-1532623034127-3d92b01fb3c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHR5cGluZ3xlbnwxfHx8fDE3NTU3ODcxOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
     animatedPreview: 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExamM1YjV6OGV4YWRmMWRnOGZxbms0cHJ2dzlmN3dvMDFoeW5pcGoyOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif',
     tags: ['React', 'Express', 'MongoDB', 'Stripe', 'Redux', 'AWS', 'TypeScript'],
     category: 'fullstack',
     github: 'https://github.com/coderkp',
-    live: 'https://demo.example.com',
+    live: 'https://wonderlust-o9ym.onrender.com/',
     icon: Code,
     timeline: '4 months',
     team: 'Solo Project',
@@ -179,7 +179,7 @@ export const projectsData: Record<number, ProjectData> = {
     tags: ['Python', 'TensorFlow', 'FastAPI', 'Docker', 'AWS', 'OpenCV', 'Keras'],
     category: 'ml',
     github: 'https://github.com/coderkp',
-    live: 'https://demo.example.com',
+    live: 'https://wonderlust-o9ym.onrender.com/',
     icon: Brain,
     timeline: '3 months',
     team: 'Solo Project',

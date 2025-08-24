@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { Calendar, Users, Monitor, CheckCircle, ImageIcon, Play, Github } from 'lucide-react';
 import { ProjectData } from '../data/projectsData';
@@ -61,7 +61,7 @@ export function ProjectHero({ project, onBack }: ProjectHeroProps) {
           <span>Back to Projects</span>
         </motion.button>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -183,62 +183,7 @@ export function ProjectLiveDemoAndPreview({ project }: ProjectMetricsAndPreviewP
       className="space-y-6"
     >
       {/* Animated Demo Preview */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        className="bg-gray-800/70 backdrop-blur-sm pt-2 mt-6 p-6 rounded-xl border border-gray-700"
-      >
-        <div className="flex items-center space-x-2 mb-2">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          >
-            <Play size={20} className="text-green-400" />
-          </motion.div>
-          <h3 className="text-green-400">Live Demo Preview</h3>
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-2 h-2 bg-green-400 rounded-full"
-          />
-        </div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          whileHover={{ scale: 1.02, y: -5 }}
-          className="relative group cursor-pointer overflow-hidden rounded-lg border-2 border-green-400/30 hover:border-green-400/60 transition-all duration-500"
-        >
-          <img
-            src={project.animatedPreview}
-            alt={`${project.title} animated demo`}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          {/* <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileHover={{ opacity: 1, y: 0 }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              className="w-16 h-16 bg-green-500/80 rounded-full flex items-center justify-center backdrop-blur-sm border border-green-400/50"
-            >
-              <Play size={24} className="text-white ml-1" fill="currentColor" />
-            </motion.div>
-          </motion.div> */}
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-              className="px-3 py-1 bg-green-500/80 text-white text-xs rounded-full backdrop-blur-sm"
-            >
-              LIVE
-            </motion.div>
-          </div>
-        </motion.div>
-      </motion.div>
+      <ProjectLiveDemo project={project} />
 
       {/* Project Preview Gallery */}
       <motion.div
@@ -285,6 +230,155 @@ export function ProjectLiveDemoAndPreview({ project }: ProjectMetricsAndPreviewP
   );
 }
 
+interface ProjectLiveDemoProps {
+  project: ProjectData;
+}
+
+export function ProjectLiveDemo({ project }: ProjectLiveDemoProps) {
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [iframeError, setIframeError] = useState(false);
+  const [iframeTimeout, setIframeTimeout] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  useEffect(() => {
+    setIframeLoaded(false);
+    setIframeError(false);
+    setIframeTimeout(false);
+    if (project.live) {
+      timeoutRef.current = setTimeout(() => {
+        setIframeTimeout(true);
+      }, 8000); // 8 seconds timeout
+    }
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [project.live]);
+
+  const handleIframeLoad = () => {
+    setIframeLoaded(true);
+    setIframeError(false);
+    setIframeTimeout(false);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+
+  const handleIframeError = () => {
+    setIframeError(true);
+    setIframeLoaded(false);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.8 }}
+      className="bg-gray-800/70 backdrop-blur-sm pt-2 mt-6 p-6 rounded-xl border border-gray-700"
+    >
+      {project.live && !iframeError && !iframeTimeout ? (
+        <>
+          <div className="flex items-center space-x-2 mb-2">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            >
+              <Play size={20} className="text-green-400" />
+            </motion.div>
+            <h3 className="text-green-400">{iframeLoaded ? 'Live Demo Preview' : 'Preview'}</h3>
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-2 h-2 bg-green-400 rounded-full"
+            />
+          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            whileHover={{ scale: 1.02, y: -5 }}
+            className="relative group h-96 cursor-pointer overflow-hidden rounded-lg border-2 border-green-400/30 hover:border-green-400/60 transition-all duration-500"
+          >
+            {/* Fallback image overlayed until iframe loads */}
+            {!iframeLoaded && (
+
+              <img
+                src={project.animatedPreview}
+                alt={`${project.title} animated demo fallback`}
+                className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0 z-10 bg-black/20"
+                style={{ pointerEvents: 'none' }}
+              />
+            )}
+            <div className="relative w-full h-96 overflow-hidden">
+              <iframe
+                src={project.live}
+                title={`${project.title} live preview`}
+                className="w-full h-96 object-cover transition-transform duration-500 absolute z-20 top-0 left-0"
+                style={{
+                  width: "200%",
+                  height: "200%",
+                  transform: "scale(0.5)",
+                  transformOrigin: "top left",
+                  border: "none"
+                }}
+                onLoad={handleIframeLoad}
+                onError={handleIframeError}
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-green-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            {/* Hover-only LIVE indicator in green circle, top right, only if iframe is loaded */}
+            {/* Hover-only LIVE indicator in green circle, top right, only if iframe is loaded */}
+            <div className="absolute top-2 right-2 transition-opacity z-30">
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className={
+                  'px-3 py-1 bg-green-500/25 text-white text-xs rounded-full backdrop-blur-sm ' +
+                  (iframeLoaded ? 'opacity-0 group-hover:opacity-100' : 'opacity-0')
+                }
+                style={{ pointerEvents: 'none' }}
+              >
+                LIVE
+              </motion.div>
+            </div>
+          </motion.div>
+        </>
+      ) : (
+        <div>
+          <div className="flex items-center space-x-2 mb-2">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            >
+              <Play size={20} className="text-green-400" />
+            </motion.div>
+            <h3 className="text-green-400">Project Preview</h3>
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className="w-2 h-2 bg-green-400 rounded-full"
+            />
+          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            whileHover={{ scale: 1.02, y: -5 }}
+            className="relative group h-96 cursor-pointer overflow-hidden rounded-lg border-2 border-green-400/30 hover:border-green-400/60 transition-all duration-500"
+          >
+            <img
+              src={project.animatedPreview}
+              alt={`${project.title} animated demo fallback`}
+              className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500 absolute inset-0 z-10 bg-black/20"
+              style={{ pointerEvents: 'none' }}
+            />
+          </motion.div>
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
+
 interface ProjectInfoCardsProps {
   project: ProjectData;
   isInView: boolean;
@@ -293,75 +387,76 @@ interface ProjectInfoCardsProps {
 export function ProjectInfoCards({ project, isInView }: ProjectInfoCardsProps) {
   return (
     <div>
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className="grid md:grid-cols-3 gap-8 mb-16"
-    >
       <motion.div
-        whileHover={{ y: -5, scale: 1.02 }}
-        className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="grid md:grid-cols-3 gap-8 mb-16"
       >
-        <div className="flex items-center space-x-3 mb-4">
-          <Calendar className="text-blue-400" size={24} />
-          <h3 className="text-blue-400 text-lg">Timeline</h3>
-        </div>
-        <p className="text-3xl mb-2">{project.timeline}</p>
-        <p className="text-gray-400">Development Period</p>
-      </motion.div>
+        <motion.div
+          whileHover={{ y: -5, scale: 1.02 }}
+          className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
+        >
+          <div className="flex items-center space-x-3 mb-4">
+            <Calendar className="text-blue-400" size={24} />
+            <h3 className="text-blue-400 text-lg">Timeline</h3>
+          </div>
+          <p className="text-3xl mb-2">{project.timeline}</p>
+          <p className="text-gray-400">Development Period</p>
+        </motion.div>
 
-      <motion.div
-        whileHover={{ y: -5, scale: 1.02 }}
-        className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
-      >
-        <div className="flex items-center space-x-3 mb-4">
-          <Users className="text-blue-400" size={24} />
-          <h3 className="text-blue-400 text-lg">Team</h3>
-        </div>
-        <p className="text-3xl mb-2">{project.team}</p>
-        <p className="text-gray-400">Project Structure</p>
-      </motion.div>
+        <motion.div
+          whileHover={{ y: -5, scale: 1.02 }}
+          className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
+        >
+          <div className="flex items-center space-x-3 mb-4">
+            <Users className="text-blue-400" size={24} />
+            <h3 className="text-blue-400 text-lg">Team</h3>
+          </div>
+          <p className="text-3xl mb-2">{project.team}</p>
+          <p className="text-gray-400">Project Structure</p>
+        </motion.div>
 
-      <motion.div
-        whileHover={{ y: -5, scale: 1.02 }}
-        className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
-      >
-        <div className="flex items-center space-x-3 mb-4">
-          <Monitor className="text-blue-400" size={24} />
-          <h3 className="text-blue-400 text-lg">Category</h3>
-        </div>
-        <p className="text-3xl mb-2 capitalize">{project.category}</p>
-        <p className="text-gray-400">Project Type</p>
+        <motion.div
+          whileHover={{ y: -5, scale: 1.02 }}
+          className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
+        >
+          <div className="flex items-center space-x-3 mb-4">
+            <Monitor className="text-blue-400" size={24} />
+            <h3 className="text-blue-400 text-lg">Category</h3>
+          </div>
+          <p className="text-3xl mb-2 capitalize">{project.category}</p>
+          <p className="text-gray-400">Project Type</p>
+        </motion.div>
       </motion.div>
-    </motion.div>
-    {/* Technologies Used */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 1.2 }}
-              className="text-center mb-16"
+      {/* Technologies Used */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 1.2 }}
+        className="text-center mb-16"
+      >
+        <h3 className="text-3xl mb-8">
+          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Technologies Used
+          </span>
+        </h3>
+        <div className="flex flex-wrap justify-center gap-4">
+          {project.tags.map((tag, index) => (
+            <motion.span
+              key={tag}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.3, delay: 1.4 + index * 0.1 }}
+              whileHover={{ scale: 1.1, y: -3 }}
+              className="px-6 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-400 rounded-xl border border-blue-500/30 hover:border-blue-400 transition-all backdrop-blur-sm"
             >
-              <h3 className="text-3xl mb-8">
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Technologies Used
-                </span>
-              </h3>
-              <div className="flex flex-wrap justify-center gap-4">
-                {project.tags.map((tag, index) => (
-                  <motion.span
-                    key={tag}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.3, delay: 1.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    className="px-6 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-400 rounded-xl border border-blue-500/30 hover:border-blue-400 transition-all backdrop-blur-sm"
-                  >
-                    {tag}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-            </div>
+              {tag}
+            </motion.span>
+          ))}
+        </div>
+      </motion.div>
+    </div>
   )
 }
+
