@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import { Menu, X, FileText } from 'lucide-react';
 import logoImage from '../assets/images/logo-image.png';
+import resume from '../assets/pdfs/resume.pdf';
 
 interface HeaderProps {
   activeSection: string;
@@ -9,6 +10,7 @@ interface HeaderProps {
 
 
 export default function Header( { activeSection }: HeaderProps) {
+
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -93,7 +95,10 @@ export default function Header( { activeSection }: HeaderProps) {
 
           {/* Resume Button - Always Visible */}
           <div className="flex items-center space-x-4">
-            <motion.button
+            <motion.a
+              href={resume}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 bg-blue-800 hover:bg-blue-700 rounded-lg transition-colors text-sm"
@@ -101,7 +106,7 @@ export default function Header( { activeSection }: HeaderProps) {
               <FileText size={14} className="sm:w-4 sm:h-4" />
               <span className="hidden sm:inline">Resume</span>
               <span className="sm:hidden text-xs">CV</span>
-            </motion.button>
+            </motion.a>
 
             {/* Mobile Menu Button */}
             <button

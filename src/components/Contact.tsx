@@ -1,10 +1,25 @@
 import React, { useRef, useState} from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle, Linkedin, Twitter, MessageCircle, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Linkedin, Twitter, MessageCircle, Instagram, Github } from 'lucide-react';
 
 export default function Contact() {
   const ref = useRef(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  // Highlight state for form
+  const [formHighlight, setFormHighlight] = useState(false);
+  // Scroll to form handler
+  const handleScrollToForm = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setFormHighlight(true);
+      setTimeout(() => setFormHighlight(false), 2000); // highlight for 2 seconds
+      setTimeout(() => {
+        nameInputRef.current?.focus();
+      }, 500); // delay to allow scroll animation
+    }
+  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -57,52 +72,52 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      value: 'coderkp@example.com',
-      link: 'mailto:#'
+      value: 'pkartikey5757@gmail.com',
+      link: 'mailto:pkartikey5757@gmail.com'
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+91 73098 XXXXX',
-      link: 'tel:+91'
+      value: '+91 73098 85644',
+      link: 'tel:+91 73098 85644'
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'Prayagraj, UP',
+      value: 'Prayagraj, India',
       link: null
     }
   ];
 
   const socialLinks = [
     { 
+      name: 'GitHub', 
+      icon: Github, 
+      href: 'https://github.com/Coder-Kartikey', 
+      color: 'hover:text-indigo-400',
+      bgColor: 'hover:bg-indigo-400/20'
+    },
+    { 
       name: 'LinkedIn', 
       icon: Linkedin, 
-      href: '#', 
+      href: 'https://www.linkedin.com/in/coderkp/', 
       color: 'hover:text-blue-500',
       bgColor: 'hover:bg-blue-500/20'
     },
     { 
       name: 'Twitter/X', 
       icon: Twitter, 
-      href: '#', 
+      href: 'https://x.com/coderkp_', 
       color: 'hover:text-sky-400',
       bgColor: 'hover:bg-sky-400/20'
     },
     { 
       name: 'Discord', 
       icon: MessageCircle, 
-      href: '#', 
+      href: 'https://discord.com/users/coderkp_', 
       color: 'hover:text-indigo-400',
       bgColor: 'hover:bg-indigo-400/20'
     },
-    { 
-      name: 'Instagram', 
-      icon: Instagram, 
-      href: '#', 
-      color: 'hover:text-pink-400',
-      bgColor: 'hover:bg-pink-400/20'
-    }
   ];
 
   return (
@@ -117,7 +132,7 @@ export default function Contact() {
           <h2 className="text-4xl mb-4">Let's Work Together</h2>
           <div className="w-24 h-1 bg-blue-400 mx-auto mb-8"></div>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Let's discuss how we can bring your ideas to life.
+            I'm always excited to connect and collaborate. Let's discuss how we can build something amazing together.
           </p>
         </motion.div>
 
@@ -130,10 +145,10 @@ export default function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl text-blue-400 mb-6">Get in Touch</h3>
+              <h3 className="text-2xl text-blue-400 mb-4">Get in Touch</h3>
               <p className="text-gray-400 mb-8 leading-relaxed">
-                Open to discussing full-time opportunities, contract projects, and technical consulting engagements. 
-                Let's connect to explore how I can contribute to your team's success.
+                I am actively seeking internship and full-time SDE opportunities.
+                I'm passionate about building great software and am always open to connecting with new people.
               </p>
             </div>
 
@@ -170,7 +185,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="pt-8"
+              className="pt-1"
             >
               <h4 className="text-lg mb-6">Follow Me</h4>
               <div className="grid grid-cols-2 gap-4">
@@ -198,15 +213,16 @@ export default function Contact() {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-gray-900 rounded-2xl p-8 border border-gray-700"
+            className={`bg-gray-900 rounded-2xl p-8 border-2 transition-all duration-500 ${formHighlight ? 'border-blue-400 shadow-lg' : 'border-gray-700'}`}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm text-gray-400 mb-2">
                     Name *
                   </label>
                   <input
+                    ref={nameInputRef}
                     type="text"
                     id="name"
                     name="name"
@@ -319,17 +335,19 @@ export default function Contact() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16 p-8 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl border border-blue-500/20"
         >
-          <h3 className="text-2xl mb-4">Ready to Start Your Project?</h3>
+          <h3 className="text-2xl mb-4">Let's Build Something Great Together!</h3>
           <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
             Let's discuss how we can work together to create something amazing. 
-            I'm excited to hear about your ideas and help bring them to life.
+            I'd love to connect.
           </p>
           <motion.button
+            type="button"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+            onClick={handleScrollToForm}
           >
-            Start a Conversation
+            Get in Touch
           </motion.button>
         </motion.div>
       </div>

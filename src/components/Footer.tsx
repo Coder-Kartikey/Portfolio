@@ -23,10 +23,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { name: 'GitHub', icon: Github, href: '#' },
-    { name: 'LinkedIn', icon: Linkedin, href: '#' },
-    { name: 'Twitter', icon: Twitter, href: '#' },
-    { name: 'Email', icon: Mail, href: 'mailto:#' }
+    { name: 'GitHub', icon: Github, href: 'https://github.com/Coder-Kartikey' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/in/coderkp/' },
+    { name: 'Twitter', icon: Twitter, href: 'https://x.com/coderkp_' },
+    { name: 'Email', icon: Mail, href: 'mailto:pkartikey5757@gmail.com' }
   ];
 
   const scrollToSection = (sectionId: string) => {
@@ -58,9 +58,11 @@ export default function Footer() {
               </div>
               <span className="text-xl text-white">CoderKP</span>
             </div>
+            <p className="text-gray-400 max-w-md">
+              Full Stack Developer | Generative AI Enthusiast.
+            </p>
             <p className="text-gray-400 mb-6 max-w-md">
-              Full Stack Developer passionate about creating innovative solutions with AI/ML integration.
-              Building the future, one line of code at a time.
+              Turning caffeine and curiosity into clean, functional code.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -114,12 +116,12 @@ export default function Footer() {
                   coderkp@example.com
                 </a>
               </p>
-              <p className="text-gray-400">Prayagraj, UP</p>
               <p className="text-gray-400">
-                <a href="tel:+91" className="hover:text-blue-400 transition-colors">
-                  +91 73098 XXXXX
+                <a href="tel:+917309885644" className="hover:text-blue-400 transition-colors">
+                  +91 73098 85644
                 </a>
               </p>
+              <p className="text-gray-400">Prayagraj, india</p>
             </div>
           </motion.div>
 

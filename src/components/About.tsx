@@ -8,31 +8,31 @@ export default function About () {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const coreValues = [
-    { 
-      icon: Code2, 
-      title: 'Technical Excellence', 
-      description: 'Delivering high-performance solutions with modern architecture patterns and industry best practices',
-      color: 'from-blue-400 to-cyan-500'
-    },
-    { 
-      icon: Rocket, 
-      title: 'Business Impact', 
-      description: 'Building solutions that drive measurable results and create tangible value for organizations',
-      color: 'from-purple-400 to-pink-500'
-    },
-    { 
-      icon: Brain, 
-      title: 'Innovation Leadership', 
-      description: 'Leading adoption of emerging technologies and AI integration to solve complex business challenges',
-      color: 'from-green-400 to-emerald-500'
-    },
-    { 
-      icon: Database, 
-      title: 'Scalable Solutions', 
-      description: 'Architecting systems that grow with business needs while maintaining performance and reliability',
-      color: 'from-orange-400 to-red-500'
-    }
-  ];
+  { 
+    icon: Code2, 
+    title: 'Clean Code', 
+    description: 'Writing clean, performant, and maintainable code to build robust applications.',
+    color: 'from-blue-400 to-cyan-500'
+  },
+  { 
+    icon: Rocket, 
+    title: 'Intuitive UI/UX', 
+    description: 'Crafting responsive and accessible interfaces focused on a great user experience.',
+    color: 'from-purple-400 to-pink-500'
+  },
+  { 
+    icon: Brain, 
+    title: 'AI & ML Integration', 
+    description: 'Leveraging Gen AI & machine learning to build smarter, more capable, and feature-rich applications.',
+    color: 'from-green-400 to-emerald-500'
+  },
+  { 
+    icon: Database, 
+    title: 'Full Stack Development', 
+    description: 'Developing across the entire stack, from front-end UI to backend APIs and databases.',
+    color: 'from-orange-400 to-red-500'
+  }
+];
 
   return (
     <section ref={ref} className="py-20 bg-gray-800/50">
@@ -52,23 +52,21 @@ export default function About () {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-2xl mb-6 text-blue-400">My Journey</h3>
+            <h3 className="text-2xl mb-6 text-blue-400">Hello, World!</h3>
             <div className="space-y-4 text-gray-300">
               <p>
-                Results-driven Full Stack Developer with proven expertise in delivering scalable applications 
-                that integrate advanced AI/ML capabilities. Currently pursuing advanced studies while building 
-                production-ready solutions that drive business value and user engagement.
+                Hello! I'm CoderKP, a Computer Science student passionate about the intersection of Full Stack Development and Generative AI.
+                I'm not just interested in building websites; I'm driven by the challenge of creating intelligent, responsive applications that can learn, adapt, and provide real value to users.
               </p>
               <p>
-                I specialize in architecting end-to-end systems that seamlessly blend modern web technologies 
-                with intelligent automation. From responsive user interfaces to robust backend APIs, and from 
-                data processing pipelines to ML model deployment - I deliver comprehensive solutions across 
-                the entire technology stack.
+                My passion has led me to dive deep into the entire technology stack.
+                I build end-to-end solutions, from crafting intuitive front-ends with React to engineering robust APIs with Node.js.
+                My projects, which you can explore below, are my playground for integrating these web technologies with the power of Python, especially in data processing and deploying machine learning models.
+                I believe the future of web development lies in this seamless blend of functionality and intelligence.
               </p>
               <p>
-                My approach combines technical excellence with business acumen, ensuring every project not only 
-                meets technical requirements but also delivers measurable impact. I stay current with emerging 
-                technologies and industry best practices to consistently deliver innovative solutions.
+                I am actively seeking an internship or full-time role where I can apply my skills to real-world challenges.
+                As a dedicated learner and collaborative teammate, I'm eager to contribute to a forward-thinking team and grow as a developer.
               </p>
             </div>
           </motion.div>
@@ -151,9 +149,9 @@ export default function About () {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-16 text-center"
         >
-          <h3 className="text-2xl mb-8 text-blue-400">Core Expertise</h3>
+          <h3 className="text-2xl mb-8 text-blue-400">My Core Technologies</h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {['React', 'Node.js', 'Python', 'TensorFlow', 'MongoDB', 'PostgreSQL', 'Docker', 'AWS'].map((skill, index) => (
+            {['React', 'Node.js', 'MongoDB', 'Python', 'LangChain', 'TensorFlow'].map((skill, index) => (
               <motion.div
                 key={skill}
                 initial={{ opacity: 0, scale: 0 }}

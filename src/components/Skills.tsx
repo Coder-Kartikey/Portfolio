@@ -1,6 +1,24 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { IconType } from 'react-icons';
+import { VscVscode } from 'react-icons/vsc';
+import { FaJava, FaNetworkWired, FaProjectDiagram, FaCubes, FaServer, FaDatabase, FaSearch, FaLayerGroup } from 'react-icons/fa';
+import { SiReact, SiHtml5,  SiVscodium, SiTypescript, SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress, SiPython, SiFastapi, SiTensorflow, SiOpenai, SiScikitlearn, SiFirebase, SiPostgresql, SiMongoose, SiMongodb, SiMysql, SiSupabase, SiMui, SiShadcnui, SiOpencv, SiNumpy, SiKeras, SiGooglegemini, SiGoogleearthengine, SiJavascript, SiC, SiCplusplus, SiRedux, SiHuggingface, SiRedis, SiWebpack, SiPostman, SiCloudinary, SiNpm, SiJira, SiFigma, SiVercel, SiGithub, SiLinux, SiRender, SiV, SiCanva, SiAuthentik, SiDocker, SiJsonwebtokens, SiGooglecolab, SiSocketdotio, SiPassport } from 'react-icons/si';
 // import { Sparkles } from 'lucide-react';
+
+
+type Skill = {
+  name: string;
+  icon: IconType;
+  iconColor: string;
+  color: string;
+};
+
+type SkillCategory = {
+  title: string;
+  icon: string;
+  skills: Skill[];
+};
 
 export default function Skills() {
 
@@ -8,53 +26,95 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
-  const skillCategories = [
+  const skillCategories: SkillCategory[] = [
+    {
+      title: 'Programming Languages',
+      icon: '💻',
+      skills: [
+        { name: 'JavaScript', icon: SiJavascript, iconColor: '#8CC84B', color: 'from-green-400 to-green-600' },
+        { name: 'TypeScript', icon: SiTypescript, iconColor: '#3178C6', color: 'from-gray-500 to-gray-700' },
+        { name: 'Python', icon: SiPython, iconColor: '#3776AB', color: 'from-yellow-400 to-yellow-600' },
+        { name: 'C++', icon: SiCplusplus, iconColor: '#00599C', color: 'from-teal-400 to-teal-600' },
+        { name: 'Java', icon: FaJava, iconColor: '#F89820', color: 'from-pink-400 to-pink-600' },
+        { name: 'HTML5 / CSS3', icon: SiHtml5, iconColor: '#5C3EE8', color: 'from-green-600 to-green-800' },
+      ]
+    },
+    {
+      title: 'Architecture & Paradigms',
+      icon: '🏛️',
+      skills: [
+        { name: 'RESTful APIs', icon: FaNetworkWired, iconColor: '#8CC84B', color: 'from-green-400 to-green-600' },
+        { name: 'MVC Pattern', icon: FaProjectDiagram, iconColor: '#6366F1', color: 'from-indigo-400 to-indigo-600' },
+        { name: `OOP`, icon: FaCubes, iconColor: '#F59E42', color: 'from-yellow-400 to-yellow-600' },
+        { name: 'Microservices', icon: FaServer, iconColor: '#10B981', color: 'from-teal-400 to-teal-600' },
+        { name: 'Authentication', icon: SiAuthentik, iconColor: '#FD4B2D', color: 'from-green-600 to-green-800' },
+        { name: 'State Management', icon: FaLayerGroup, iconColor: '#F89820', color: 'from-pink-400 to-pink-600' }
+      ]
+    },
     {
       title: 'Frontend Development',
       icon: '🎨',
       skills: [
-        { name: 'React', icon: '⚛️', color: 'from-blue-400 to-blue-600' },
-        { name: 'TypeScript', icon: '📘', color: 'from-blue-500 to-blue-700' },
-        { name: 'Next.js', icon: '▲', color: 'from-gray-600 to-gray-800' },
-        { name: 'Tailwind CSS', icon: '🎨', color: 'from-cyan-400 to-cyan-600' },
-        { name: 'React Native', icon: '📱', color: 'from-blue-400 to-purple-600' },
-        { name: 'Vue.js', icon: '💚', color: 'from-green-400 to-green-600' }
+        { name: 'React', icon: SiReact, iconColor: '#61DAFB', color: 'from-blue-400 to-blue-600' },
+        { name: 'Redux Toolkit', icon: SiRedux, iconColor: '#764ABC', color: 'from-blue-500 to-blue-700' },
+        { name: 'Tailwind CSS', icon: SiTailwindcss, iconColor: '#06B6D4', color: 'from-cyan-400 to-cyan-600' },
+        { name: 'Shadcn UI', icon: SiShadcnui, iconColor: '#000000', color: 'from-gray-600 to-gray-800' },
+        { name: 'Material UI', icon: SiMui, iconColor: '#007FFF', color: 'from-green-400 to-green-600' },
+        { name: 'Bootstrap', icon: SiBootstrap, iconColor: '#7952B3', color: 'from-blue-400 to-purple-600' },
       ]
     },
     {
       title: 'Backend Development',
       icon: '⚙️',
       skills: [
-        { name: 'Node.js', icon: '🟢', color: 'from-green-400 to-green-600' },
-        { name: 'Python', icon: '🐍', color: 'from-yellow-400 to-yellow-600' },
-        { name: 'Express.js', icon: '🚀', color: 'from-gray-500 to-gray-700' },
-        { name: 'Django', icon: '🎯', color: 'from-green-600 to-green-800' },
-        { name: 'FastAPI', icon: '⚡', color: 'from-teal-400 to-teal-600' },
-        { name: 'GraphQL', icon: '🔗', color: 'from-pink-400 to-pink-600' }
+        { name: 'Node.js', icon: SiNodedotjs, iconColor: '#8CC84B', color: 'from-green-400 to-green-600' },
+        { name: 'Express.js', icon: SiExpress, iconColor: '#000000', color: 'from-gray-500 to-gray-700' },
+        { name: 'FastAPI', icon: SiFastapi, iconColor: '#009688', color: 'from-teal-400 to-teal-600' },
+        { name: 'Socket.IO', icon: SiSocketdotio, iconColor: '#010101', color: 'from-gray-600 to-gray-800' },
+        { name: 'Mongoose', icon: SiMongoose, iconColor: '#5C3EE8', color: 'from-green-600 to-green-800' },
+        { name: 'Passport.js', icon: SiPassport, iconColor: '#34E27A', color: 'from-green-600 to-green-800' }
       ]
     },
     {
-      title: 'AI/ML & Data Science',
+      title: 'AI/ML & Modern Technologies',
       icon: '🤖',
       skills: [
-        { name: 'TensorFlow', icon: '🧠', color: 'from-orange-400 to-orange-600' },
-        { name: 'PyTorch', icon: '🔥', color: 'from-red-400 to-red-600' },
-        { name: 'Scikit-learn', icon: '📊', color: 'from-orange-300 to-orange-500' },
-        { name: 'OpenAI API', icon: '🤖', color: 'from-green-400 to-blue-600' },
-        { name: 'Pandas', icon: '🐼', color: 'from-purple-400 to-purple-600' },
-        { name: 'Jupyter', icon: '📓', color: 'from-orange-500 to-red-500' }
+        { name: 'LangChain', icon: SiScikitlearn, iconColor: '#F7931E', color: 'from-orange-300 to-orange-500' },
+        { name: 'TensorFlow', icon: SiTensorflow, iconColor: '#FF6F20', color: 'from-orange-400 to-orange-600' },
+        { name: 'Keras', icon: SiKeras, iconColor: '#D00000', color: 'from-red-400 to-red-600' },
+        { name: 'NumPy', icon: SiNumpy, iconColor: '#013243', color: 'from-green-400 to-blue-600' },
+        { name: 'OpenCV', icon: SiOpencv, iconColor: '#5C3EE8', color: 'from-green-400 to-blue-600' },
+        { name: 'Faiss', icon: FaDatabase, iconColor: '#FFD21E', color: 'from-purple-400 to-purple-600' },
       ]
     },
     {
-      title: 'Database & Cloud',
+      title: 'Database & BaaS',
       icon: '☁️',
       skills: [
-        { name: 'MongoDB', icon: '🍃', color: 'from-green-500 to-green-700' },
-        { name: 'PostgreSQL', icon: '🐘', color: 'from-blue-600 to-blue-800' },
-        { name: 'AWS', icon: '☁️', color: 'from-orange-500 to-orange-700' },
-        { name: 'Docker', icon: '🐳', color: 'from-blue-400 to-blue-600' },
-        { name: 'Firebase', icon: '🔥', color: 'from-yellow-500 to-orange-600' },
-        { name: 'Redis', icon: '🔴', color: 'from-red-400 to-red-600' }
+        { name: 'MongoDB', icon: SiMongodb, iconColor: '#4DB33D', color: 'from-green-500 to-green-700' },
+        { name: 'MySQL', icon: SiMysql, iconColor: '#00758F', color: 'from-blue-500 to-blue-700' },
+        { name: 'PostgreSQL', icon: SiPostgresql, iconColor: '#336791', color: 'from-blue-600 to-blue-800' },
+        { name: 'Supabase', icon: SiSupabase, iconColor: '#3FCF8E', color: 'from-red-400 to-red-600' },
+        { name: 'Firebase', icon: SiFirebase, iconColor: '#DD2C00', color: 'from-yellow-500 to-orange-600' },
+        { name: 'Redis', icon: SiRedis, iconColor: '#2496ED', color: 'from-blue-400 to-blue-600' },
+      ]
+    },
+    {
+      title: 'Tools & Platforms',
+      icon: '🛠️',
+      skills: [
+        { name: 'Git & GitHub', icon: SiGithub, iconColor: '#181717', color: 'from-gray-800 to-gray-600' },
+        { name: 'Google Colab', icon: SiGooglecolab, iconColor: '#FF9900', color: 'from-yellow-400 to-yellow-600' },
+        { name: 'JWT (JSON Web Tokens)', icon: SiJsonwebtokens, iconColor: '#2496ED', color: 'from-blue-400 to-blue-600' },
+        { name: 'Vercel', icon: SiVercel, iconColor: '#000000', color: 'from-gray-800 to-gray-600' },
+        { name: 'Render', icon: SiRender, iconColor: '#FCC624', color: 'from-yellow-400 to-yellow-600' },
+        { name: 'Postman', icon: SiPostman, iconColor: '#FF6C37', color: 'from-orange-400 to-orange-600' },
+        { name: 'VS Code', icon: VscVscode, iconColor: '#007ACC', color: 'from-blue-400 to-blue-600' },
+        { name: 'Figma', icon: SiFigma, iconColor: '#F24E1E', color: 'from-red-400 to-red-600' },
+        { name: 'Canva', icon: SiCanva, iconColor: '#00C4CC', color: 'from-blue-400 to-blue-600' },
+        { name: 'npm', icon: SiNpm, iconColor: '#CB3837', color: 'from-red-400 to-red-600' },
+        { name: 'Webpack', icon: SiWebpack, iconColor: '#8DD6F9', color: 'from-blue-400 to-blue-600' },
+        { name: 'Cloudinary', icon: SiCloudinary, iconColor: '#F7B93A', color: 'from-yellow-400 to-yellow-600' }
       ]
     }
   ];
@@ -105,15 +165,15 @@ export default function Skills() {
                     key={skill.name}
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ 
-                      duration: 0.5, 
+                    transition={{
+                      duration: 0.5,
                       delay: (categoryIndex * 0.2) + (skillIndex * 0.1),
                       type: "spring",
                       stiffness: 200
                     }}
                     onMouseEnter={() => handleMouseEnter(skill.name)}
                     onMouseLeave={handleMouseLeave}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
                       y: -5,
                     }}
@@ -121,23 +181,23 @@ export default function Skills() {
                   >
                     <div className="relative overflow-hidden rounded-xl p-4 h-24 flex flex-col items-center justify-center bg-gray-800 border border-gray-700 hover:border-blue-500/50 transition-all duration-300 cursor-pointer">
                       {/* Gradient Background */}
-                      <motion.div 
+                      <motion.div
                         className={`absolute inset-0 bg-gradient-to-r ${skill.color}`}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: hoveredSkill === skill.name ? 0.10 : 0 }}
                         transition={{ duration: 0.3 }}
                       />
-                      
+
                       {/* Skill Icon */}
                       <motion.div
-                        animate={hoveredSkill === skill.name ? { 
+                        animate={hoveredSkill === skill.name ? {
                           scale: [1, 1.2, 1],
                           rotate: [0, 5, -5, 0]
                         } : { scale: 1, rotate: 0 }}
                         transition={{ duration: 0.6 }}
                         className="text-2xl mb-1"
                       >
-                        {skill.icon}
+                        {React.createElement(skill.icon as React.ElementType, { className: 'w-7 h-7', color: skill.iconColor })}
                       </motion.div>
 
                       {/* Skill Name */}
@@ -149,7 +209,7 @@ export default function Skills() {
                       <motion.div
                         className="absolute inset-0 rounded-xl border-2 border-blue-400"
                         initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ 
+                        animate={{
                           opacity: hoveredSkill === skill.name ? [0, 1, 0] : 0,
                           scale: hoveredSkill === skill.name ? [0.8, 1.05, 1] : 0.8
                         }}
@@ -164,7 +224,7 @@ export default function Skills() {
                               <motion.div
                                 key={i}
                                 className="absolute w-1 h-1 bg-blue-400 rounded-full"
-                                initial={{ 
+                                initial={{
                                   opacity: 0,
                                   x: 0,
                                   y: 0,
@@ -189,7 +249,7 @@ export default function Skills() {
                               />
                             ))}
                           </>
-                        )}                      
+                        )}
                       </AnimatePresence>
                     </div>
                   </motion.div>
@@ -218,7 +278,7 @@ export default function Skills() {
                 updated: "2 days ago"
               },
               {
-                title: "Building", 
+                title: "Building",
                 icon: "🔨",
                 content: "AI-Powered Code Review Assistant",
                 subtitle: "Using GPT-4 & GitHub API",
@@ -227,7 +287,7 @@ export default function Skills() {
               },
               {
                 title: "Reading",
-                icon: "📖", 
+                icon: "📖",
                 content: "Clean Architecture by Robert Martin",
                 subtitle: "Improving code design patterns",
                 color: "from-green-500 to-emerald-500",
@@ -246,13 +306,13 @@ export default function Skills() {
                 key={item.title}
                 initial={{ opacity: 0, scale: 0.8, y: 20 }}
                 animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-                transition={{ 
-                  duration: 0.6, 
+                transition={{
+                  duration: 0.6,
                   delay: 1 + index * 0.15,
                   type: "spring",
                   stiffness: 200
                 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   y: -8,
                   rotateY: 5
@@ -260,19 +320,19 @@ export default function Skills() {
                 className="group relative bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500/50 transition-all duration-300 cursor-pointer overflow-hidden"
               >
                 {/* Gradient Background */}
-                <motion.div 
+                <motion.div
                   className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
                 />
-                
+
                 {/* Status Indicator */}
                 <div className="absolute top-4 right-4 flex items-center space-x-2">
                   <motion.div
-                    animate={{ 
+                    animate={{
                       scale: [1, 1.2, 1],
                       opacity: [0.5, 1, 0.5]
                     }}
-                    transition={{ 
-                      duration: 2, 
+                    transition={{
+                      duration: 2,
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
@@ -285,7 +345,7 @@ export default function Skills() {
                 <div className="relative z-10">
                   <div className="flex items-center space-x-3 mb-4">
                     <motion.div
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.2,
                         rotate: [0, -10, 10, 0]
                       }}
@@ -301,14 +361,14 @@ export default function Skills() {
                     </div>
                   </div>
 
-                  <motion.h5 
+                  <motion.h5
                     className="text-white mb-2 group-hover:text-blue-100 transition-colors"
                     initial={false}
-                    animate={{ 
+                    animate={{
                       backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                     }}
-                    transition={{ 
-                      duration: 3, 
+                    transition={{
+                      duration: 3,
                       repeat: Infinity,
                       ease: "linear"
                     }}
@@ -366,7 +426,7 @@ export default function Skills() {
             className="text-center mt-8"
           >
             <p className="text-gray-400 text-sm">
-              Fun Fact: I regularly update these to keep my portfolio fresh and engaging
+              This section is a living snapshot of my current passions and projects.
             </p>
           </motion.div>
         </motion.div>

@@ -106,7 +106,7 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
           <h2 className="text-4xl mb-4">Featured Projects</h2>
           <div className="w-24 h-1 bg-blue-400 mx-auto mb-8"></div>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            A showcase of my recent work spanning AI/ML, full-stack development, and mobile applications
+            A showcase of my work in full-stack development and AI/ML-powered applications.
           </p>
         </motion.div>
 

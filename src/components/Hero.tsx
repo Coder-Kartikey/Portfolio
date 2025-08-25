@@ -10,9 +10,9 @@ export default function Hero() {
   const [typingSpeed, setTypingSpeed] = useState(150);
   const words = useMemo(() => [
     'Full Stack Developer',
-    'AI/ML Engineer',
-    'Gen AI Specialist',
-    'Tech Innovator'
+    'AI/ML Developer',
+    'Gen AI Enthusiast',
+    // 'Cybersecurity Practitioner'
   ], []);
 
   useEffect(() => {
@@ -273,8 +273,8 @@ export default function Hero() {
               transition={{ delay: 0.7 }}
               className="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0"
             >
-              Experienced Full Stack Developer specializing in AI/ML integration and scalable web solutions. 
-              Proven track record in delivering high-performance applications that drive business value.
+              A Full Stack Developer focused on building modern, scalable applications, with a deep passion for integrating Generative AI technologies.
+              Eager to contribute my skills to a forward-thinking team.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
