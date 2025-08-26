@@ -51,7 +51,10 @@ export default function Hero() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative pt-16">
+    <div
+      className="flex items-center justify-center relative pt-16"
+      style={{ minHeight: 'calc(100vh - var(--header-height, 64px))' }}
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -116,7 +119,7 @@ export default function Hero() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-10"
               >
-                <div className="w-60 md:w-80 h-60 md:h-80 relative">
+                <div className="w-80 h-80 relative">
                   {/* Glowing Background */}
                   <motion.div
                     animate={{
