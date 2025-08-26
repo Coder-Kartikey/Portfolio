@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Github } from 'lucide-react';
-import { projectsData } from '../data/projectsData';
+import { projectsData, categoryOrder } from '../data/projectsData';
 // import * as LucideIcons from 'lucide-react';
 
 interface ProjectsProps {
@@ -16,11 +16,16 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
   // Convert projectsData object to array
   const projects = Object.values(projectsData);
 
+  // Use categoryOrder from projectsData for custom order and labels
   const categories = [
     { id: 'all', label: 'All Projects', count: projects.length },
-    { id: 'ai', label: 'AI/ML', count: projects.filter(p => p.category === 'ai' || p.category === 'ml').length },
-    { id: 'fullstack', label: 'Full Stack', count: projects.filter(p => p.category === 'fullstack').length },
-    { id: 'mobile', label: 'Mobile', count: projects.filter(p => p.category === 'mobile').length }
+    ...categoryOrder
+      .filter(catObj => projects.some(p => p.category === catObj.id))
+      .map(catObj => ({
+        id: catObj.id,
+        label: catObj.label,
+        count: projects.filter(p => p.category === catObj.id).length
+      }))
   ];
 
   const filteredProjects = filter === 'all' 

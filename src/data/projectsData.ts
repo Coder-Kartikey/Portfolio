@@ -1,5 +1,12 @@
 import { Brain, Code, Database, Users, Zap, CheckCircle, Star, Layers, Smartphone } from 'lucide-react';
 
+// Category order and labels for filter toggler (customize as needed)
+export const categoryOrder: { id: string; label: string }[] = [
+  { id: 'ai', label: 'AI/ML' },
+  { id: 'fullstack', label: 'Full Stack' },
+  { id: 'mobile', label: 'Mobile' },
+];
+
 export interface ProjectData {
   id: number;
   title: string;
@@ -177,7 +184,7 @@ export const projectsData: Record<number, ProjectData> = {
     ],
     animatedPreview: 'https://images.unsplash.com/photo-1714846201670-1c5721196c7a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZXJtaW5hbCUyMGNvZGluZyUyMG1vbml0b3J8ZW58MXx8fHwxNzU1Nzg3MTk1fDA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Python', 'TensorFlow', 'FastAPI', 'Docker', 'AWS', 'OpenCV', 'Keras'],
-    category: 'ml',
+    category: 'ai',
     github: 'https://github.com/Coder-Kartikey/',
     live: 'https://wonderlust-o9ym.onrender.com/',
     icon: Brain,
@@ -241,7 +248,7 @@ export const projectsData: Record<number, ProjectData> = {
     ],
     animatedPreview: 'https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif',
     tags: ['React Native', 'Firebase', 'Redux'],
-    category: 'mobile',
+    category: 'fullstack',
     github: 'https://github.com/Coder-Kartikey/',
     live: 'http://wonderlust-o9ym.onrender.com/',
     icon: Smartphone,
@@ -303,7 +310,7 @@ export const projectsData: Record<number, ProjectData> = {
     ],
     animatedPreview: 'https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif',
     tags: ['React', 'D3.js', 'Python', 'PostgreSQL'],
-    category: 'fullstack',
+    category: 'ai',
     github: 'https://github.com/Coder-Kartikey/',
     live: 'http://wonderlust-o9ym.onrender.com/',
     icon: Database,
@@ -364,7 +371,7 @@ export const projectsData: Record<number, ProjectData> = {
     ],
     animatedPreview: 'https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif',
     tags: ['React', 'Node.js', 'OpenAI', 'MongoDB'],
-    category: 'fullstack',
+    category: 'ai',
     github: 'https://github.com/Coder-Kartikey/',
     live: 'http://wonderlust-o9ym.onrender.com/',
     icon: Code,
