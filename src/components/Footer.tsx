@@ -112,8 +112,8 @@ export default function Footer() {
             <h3 className="text-white mb-4">Get in Touch</h3>
             <div className="space-y-2">
               <p className="text-gray-400">
-                <a href="mailto:#" className="hover:text-blue-400 transition-colors">
-                  coderkp@example.com
+                <a href="mailto:pkartikey5757@gmail.com" className="hover:text-blue-400 transition-colors">
+                  pkartikey5757@gmail.com
                 </a>
               </p>
               <p className="text-gray-400">
