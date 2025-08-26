@@ -12,7 +12,7 @@ export default function Hero() {
     'Full Stack Developer',
     'AI/ML Developer',
     'Gen AI Enthusiast',
-    // 'Cybersecurity Practitioner'
+    'Cybersecurity Practitioner'
   ], []);
 
   useEffect(() => {
@@ -116,7 +116,7 @@ export default function Hero() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-10"
               >
-                <div className="w-80 h-80 relative">
+                <div className="w-60 md:w-80 h-60 md:h-80 relative">
                   {/* Glowing Background */}
                   <motion.div
                     animate={{
@@ -243,16 +243,16 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center lg:text-left"
           >
-            <div className="mb-6">
+            <div className="md:mb-6">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-4xl sm:text-5xl lg:text-6xl mb-4"
+                className="text-4xl sm:text-5xl lg:text-6xl mv-2 md:mb-4"
               >
                 Hi! I'm <span className="text-blue-400">CoderKP</span>
               </motion.h1>
-              <div className="h-16 flex items-center justify-center lg:justify-start">
+              <div className="h-16 sm:h-16 flex items-center justify-center lg:justify-start">
                 <motion.h2
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -271,10 +271,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0"
+              className="text-lg text-gray-400 mb-4 md:mb-8 max-w-lg mx-auto lg:mx-0"
             >
               A Full Stack Developer focused on building modern, scalable applications, with a deep passion for integrating Generative AI technologies.
-              Eager to contribute my skills to a forward-thinking team.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -295,7 +294,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToAbout}
-                className="px-8 py-3 border border-gray-600 hover:border-blue-400 rounded-lg transition-colors"
+                className="px-8 py-3 border hidden md:block border-gray-600 hover:border-blue-400 rounded-lg transition-colors"
               >
                 About Me
               </motion.button>
@@ -304,12 +303,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator - Hidden on smaller screens to prevent collision */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:block"
+        className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
