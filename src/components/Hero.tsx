@@ -2,6 +2,16 @@ import React, { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, Code, Database, Brain, Sparkles, Zap } from 'lucide-react';
 import avatarImage from '../assets/images/avatar-image.png';
+// Hook to get window width for responsive logic
+function useWindowWidth() {
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return width;
+}
 
 export default function Hero() {
   const [text, setText] = useState('');
@@ -50,8 +60,14 @@ export default function Hero() {
     }
   };
 
+  const windowWidth = useWindowWidth();
+  const isMobile = windowWidth < 768; // Tailwind's md breakpoint
+
   return (
-    <div className="flex items-center justify-center relative pt-16 md:min-h-screen">
+    <div
+      className={"flex items-center justify-center relative pt-16 md:min-h-screen"}
+      style={isMobile ? { minHeight: 'calc(100vh - var(--header-height, 64px))' } : undefined}
+    >
       {/* Mobile min-height wrapper */}
       <div className="absolute inset-0 block md:hidden" style={{ minHeight: 'calc(100vh - var(--header-height, 64px))', zIndex: -1 }} />
       {/* Background Elements */}
@@ -291,7 +307,7 @@ export default function Hero() {
               >
                 View Projects
               </motion.button>
-              
+
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
