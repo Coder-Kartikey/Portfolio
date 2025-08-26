@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink, Github, Code, Database, Brain, Smartphone } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
+import { projectsData } from '../data/projectsData';
+// import * as LucideIcons from 'lucide-react';
 
 interface ProjectsProps {
   onProjectSelect?: (projectId: number) => void;
@@ -11,74 +13,8 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [filter, setFilter] = useState('all');
 
-  const projects = [
-    {
-      id: 1,
-      title: 'AI-Powered Chat Application',
-      description: 'A real-time chat application with AI integration using OpenAI API, built with React+TS and Node.js.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop',
-      tags: ['React', 'Node.js', 'OpenAI', 'Socket.io'],
-      category: 'ai',
-      github: 'https://github.com/codekp',
-      live: 'https://demo.example.com',
-      icon: Brain
-    },
-    {
-      id: 2,
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with payment integration, inventory management, and admin dashboard.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop',
-      tags: ['React', 'Express', 'MongoDB', 'Stripe'],
-      category: 'fullstack',
-      github: 'https://github.com/codekp',
-      live: 'https://demo.example.com',
-      icon: Code
-    },
-    {
-      id: 3,
-      title: 'ML Image Classifier',
-      description: 'Deep learning model for image classification using TensorFlow, deployed with FastAPI backend.',
-      image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&h=300&fit=crop',
-      tags: ['Python', 'TensorFlow', 'FastAPI', 'Docker'],
-      category: 'ml',
-      github: 'https://github.com/codekp',
-      live: 'https://demo.example.com',
-      icon: Brain
-    },
-    {
-      id: 4,
-      title: 'Task Management App',
-      description: 'Mobile-first task management application with real-time sync and collaborative features.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop',
-      tags: ['React Native', 'Firebase', 'Redux'],
-      category: 'mobile',
-      github: 'https://github.com/codekp',
-      live: 'https://demo.example.com',
-      icon: Smartphone
-    },
-    {
-      id: 5,
-      title: 'Data Analytics Dashboard',
-      description: 'Interactive dashboard for data visualization and analytics with real-time updates.',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
-      tags: ['React', 'D3.js', 'Python', 'PostgreSQL'],
-      category: 'fullstack',
-      github: 'https://github.com/codekp',
-      live: 'https://demo.example.com',
-      icon: Database
-    },
-    {
-      id: 6,
-      title: 'AI Content Generator',
-      description: 'Generate high-quality content using advanced AI models with customizable parameters.',
-      image: 'https://images.unsplash.com/photo-1676299081847-824916de030a?w=500&h=300&fit=crop',
-      tags: ['Next.js', 'OpenAI', 'Tailwind', 'Prisma'],
-      category: 'ai',
-      github: 'https://github.com/codekp',
-      live: 'https://demo.example.com',
-      icon: Brain
-    }
-  ];
+  // Convert projectsData object to array
+  const projects = Object.values(projectsData);
 
   const categories = [
     { id: 'all', label: 'All Projects', count: projects.length },
@@ -157,7 +93,7 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent" />
                 {/* Project Icon */}
                 <div className="absolute top-4 left-4 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                  <project.icon size={20} className="text-white" />
+                  {project.icon && React.createElement(project.icon, { size: 20, className: 'text-white' })}
                 </div>
                 {/* Action Buttons */}
                 <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -190,12 +126,12 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
                   {project.title}
                 </h3>
                 <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                  {project.description}
+                  {project.subtitle}
                 </p>
 
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
+                  {project.tags && project.tags.map((tag: string) => (
                     <span
                       key={tag}
                       className="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded-md border border-gray-700"
@@ -223,13 +159,16 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center mt-12"
         >
-          <motion.button
+          <motion.a
+            href="https://github.com/Coder-Kartikey/"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 border border-blue-500 text-blue-400 hover:bg-blue-600 hover:text-white rounded-lg transition-colors"
+            className="inline-block px-8 py-3 border border-blue-500 text-blue-400 hover:bg-blue-600 hover:text-white rounded-lg transition-colors"
           >
             View All Projects on GitHub
-          </motion.button>
+          </motion.a>
         </motion.div>
       </div>
     </section>
