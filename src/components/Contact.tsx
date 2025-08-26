@@ -1,6 +1,6 @@
 import React, { useRef, useState} from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle, Linkedin, Twitter, MessageCircle, Instagram, Github } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Linkedin, Twitter, MessageCircle, Github } from 'lucide-react';
 
 export default function Contact() {
   const ref = useRef(null);

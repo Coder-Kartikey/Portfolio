@@ -1,4 +1,4 @@
-import { Brain, Code, Database, Users, Zap, CheckCircle, Star, Layers } from 'lucide-react';
+import { Brain, Code, Database, Users, Zap, CheckCircle, Star, Layers, Smartphone } from 'lucide-react';
 
 export interface ProjectData {
   id: number;
@@ -227,6 +227,189 @@ export const projectsData: Record<number, ProjectData> = {
       'Model Analytics',
       'Scalable Deployment',
       'Performance Monitoring'
+    ]
+  },
+  4: {
+    id: 4,
+    title: 'Task Management App',
+    subtitle: 'Collaborative Mobile Task Management',
+    description: 'A mobile-first task management application with real-time sync, collaborative features, and push notifications. Built for productivity on the go.',
+    image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1200&h=600&fit=crop',
+    previewImages: [
+      'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=600&fit=crop'
+    ],
+    animatedPreview: 'https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif',
+    tags: ['React Native', 'Firebase', 'Redux'],
+    category: 'mobile',
+    github: 'https://github.com/codekp',
+    live: 'http://wonderlust-o9ym.onrender.com/',
+    icon: Smartphone,
+    timeline: '2 months',
+    team: 'Solo Project',
+    status: 'Production Ready',
+    overview: 'Designed for teams and individuals to manage tasks efficiently across devices.',
+    highlights: [
+      'Real-time task updates with Firebase Firestore',
+      'Push notifications for task deadlines and updates',
+      'Offline support with local data caching',
+      'Intuitive drag-and-drop task organization',
+      'User authentication with Firebase Auth'
+    ],
+    technicalDetails: {
+      'Frontend': 'React Native with Expo, Redux for state management, React Navigation for routing',
+      'Backend': 'Firebase Firestore for real-time database, Firebase Auth for user authentication, Firebase Cloud Functions for serverless backend logic',
+      'Push Notifications': 'Firebase Cloud Messaging for cross-platform push notifications',
+      'Offline Support': 'Redux Persist for local data caching and offline functionality'
+    },
+    challenges: [
+      {
+        problem: 'Ensuring real-time data synchronization across devices',
+        solution: 'Utilized Firebase Firestore real-time capabilities to sync data instantly'
+      },
+      {
+        problem: 'Managing user authentication and authorization',
+        solution: 'Implemented Firebase Auth with email/password and social login options'
+      },
+      {
+        problem: 'Optimizing app performance for mobile devices',
+        solution: 'Applied best practices for React Native performance optimization, including lazy loading and memoization'
+      }
+    ],
+    metrics: [
+      { label: 'User Engagement', value: '85%', icon: CheckCircle },
+      { label: 'Task Completion Rate', value: '90%', icon: CheckCircle },
+      { label: 'App Load Time', value: '<200ms', icon: Zap },
+      { label: 'Offline Sync Success', value: '100%', icon: CheckCircle }
+    ],
+    keyFeatures: [
+      'Real-time Collaboration',
+      'Push Notifications',
+      'Offline Support',
+      'Cross-platform',
+      'Task Reminders',
+      'Drag-and-Drop UI'
+    ]
+  },
+  5: {
+    id: 5,
+    title: 'Data Analytics Dashboard',
+    subtitle: 'Interactive Data Visualization Platform',
+    description: 'An interactive dashboard for data visualization and analytics with real-time updates and customizable widgets.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop',
+    previewImages: [
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
+    ],
+    animatedPreview: 'https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif',
+    tags: ['React', 'D3.js', 'Python', 'PostgreSQL'],
+    category: 'fullstack',
+    github: 'https://github.com/codekp',
+    live: 'http://wonderlust-o9ym.onrender.com/',
+    icon: Database,
+    timeline: '3 months',
+    team: 'Solo Project',
+    status: 'Production Ready',
+    overview: 'Empowering users to visualize and analyze data in real time.',
+    highlights: [
+      'Real-time data updates with WebSocket',
+      'Customizable dashboard widgets',
+      'Interactive charts and graphs with D3.js',
+      'User authentication and role-based access',
+      'Data export options (CSV, PDF)'
+    ],
+    technicalDetails: {
+      'Frontend': 'React with D3.js for data visualization, Redux for state management',
+      'Backend': 'Python Flask API, PostgreSQL for database management',
+      'Real-time Updates': 'WebSocket for real-time data push',
+      'Authentication': 'JWT-based authentication with role management'
+    },
+    challenges: [
+      {
+        problem: 'Handling large datasets efficiently',
+        solution: 'Implemented server-side pagination and data caching'
+      },
+      {
+        problem: 'Ensuring real-time data accuracy',
+        solution: 'Utilized WebSocket for instant data updates'
+      },
+      {
+        problem: 'Creating a responsive and intuitive UI',
+        solution: 'Applied best practices in UX design and testing'
+      }
+    ],
+    metrics: [
+      { label: 'User Engagement', value: '80%', icon: CheckCircle },
+      { label: 'Data Load Time', value: '<100ms', icon: Zap },
+      { label: 'Dashboard Customization', value: '95%', icon: CheckCircle },
+      { label: 'Real-time Update Success', value: '100%', icon: CheckCircle }
+    ],
+    keyFeatures: [
+      'Customizable Dashboards',
+      'Real-time Data Visualization',
+      'Interactive Charts',
+      'User Authentication',
+      'Data Export Options'
+    ]
+  },
+  6: {
+    id: 6,
+    title: 'AI Content Generator',
+    subtitle: 'Automated Content Creation Tool',
+    description: 'A powerful AI-driven tool for generating high-quality content in various formats, including articles, blogs, and social media posts.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop',
+    previewImages: [
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+      'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
+    ],
+    animatedPreview: 'https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif',
+    tags: ['React', 'Node.js', 'OpenAI', 'MongoDB'],
+    category: 'fullstack',
+    github: 'https://github.com/codekp',
+    live: 'http://wonderlust-o9ym.onrender.com/',
+    icon: Code,
+    timeline: '4 months',
+    team: 'Solo Project',
+    status: 'Production Ready',
+    overview: 'Empowering users to create content effortlessly with AI.',
+    highlights: [
+      'AI-driven content generation with GPT-3',
+      'Supports multiple content formats (text, image, video)',
+      'User-friendly interface with real-time previews',
+      'Customizable templates for different content types'
+    ],
+    technicalDetails: {
+      'Frontend': 'React with Tailwind CSS for styling',
+      'Backend': 'Node.js with Express, MongoDB for database management',
+      'AI Integration': 'OpenAI API for content generation',
+      'Authentication': 'JWT-based authentication with role management'
+    },
+    challenges: [
+      {
+        problem: 'Ensuring content quality and relevance',
+        solution: 'Implemented user feedback loop and content moderation tools'
+      },
+      {
+        problem: 'Handling diverse content formats',
+        solution: 'Developed modular architecture for content processing'
+      },
+      {
+        problem: 'Scaling AI model for real-time usage',
+        solution: 'Utilized serverless functions for on-demand processing'
+      }
+    ],
+    metrics: [
+      { label: 'User Engagement', value: '75%', icon: CheckCircle },
+      { label: 'Content Generation Speed', value: '<5s', icon: Zap },
+      { label: 'Template Customization', value: '90%', icon: CheckCircle },
+      { label: 'AI Accuracy', value: '85%', icon: CheckCircle }
+    ],
+    keyFeatures: [
+      'AI-Powered Content Generation',
+      'Multi-Format Support',
+      'Real-time Previews',
+      'Customizable Templates',
+      'User Feedback Integration'
     ]
   }
 };

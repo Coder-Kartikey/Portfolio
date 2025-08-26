@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { IconType } from 'react-icons';
 import { VscVscode } from 'react-icons/vsc';
-import { FaJava, FaNetworkWired, FaProjectDiagram, FaCubes, FaServer, FaDatabase, FaSearch, FaLayerGroup } from 'react-icons/fa';
-import { SiReact, SiHtml5,  SiVscodium, SiTypescript, SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress, SiPython, SiFastapi, SiTensorflow, SiOpenai, SiScikitlearn, SiFirebase, SiPostgresql, SiMongoose, SiMongodb, SiMysql, SiSupabase, SiMui, SiShadcnui, SiOpencv, SiNumpy, SiKeras, SiGooglegemini, SiGoogleearthengine, SiJavascript, SiC, SiCplusplus, SiRedux, SiHuggingface, SiRedis, SiWebpack, SiPostman, SiCloudinary, SiNpm, SiJira, SiFigma, SiVercel, SiGithub, SiLinux, SiRender, SiV, SiCanva, SiAuthentik, SiDocker, SiJsonwebtokens, SiGooglecolab, SiSocketdotio, SiPassport } from 'react-icons/si';
+import { FaJava, FaNetworkWired, FaProjectDiagram, FaCubes, FaServer, FaDatabase, FaLayerGroup } from 'react-icons/fa';
+import { SiReact, SiHtml5, SiTypescript, SiTailwindcss, SiBootstrap, SiNodedotjs, SiExpress, SiPython, SiFastapi, SiTensorflow, SiScikitlearn, SiFirebase, SiPostgresql, SiMongoose, SiMongodb, SiMysql, SiSupabase, SiMui, SiShadcnui, SiOpencv, SiNumpy, SiKeras, SiJavascript, SiCplusplus, SiRedux, SiRedis, SiWebpack, SiPostman, SiCloudinary, SiNpm, SiFigma, SiVercel, SiGithub, SiRender, SiCanva, SiAuthentik, SiJsonwebtokens, SiGooglecolab, SiSocketdotio, SiPassport } from 'react-icons/si';
 // import { Sparkles } from 'lucide-react';
 
 
