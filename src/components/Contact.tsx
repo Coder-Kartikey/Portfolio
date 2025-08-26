@@ -43,27 +43,38 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
     try {
-      // Simulate form submission (since backend might be having issues)
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For demo purposes, just show success
-      console.log('Form submission:', formData);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
+      // Submit to Formspree demo endpoint
+      const response = await fetch('https://formspree.io/f/xovnqdoj', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 3000);
+      } else {
+        setSubmitStatus('error');
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 3000);
+      }
     } catch (error) {
-      console.error('Error submitting form:', error);
       setSubmitStatus('error');
-      
-      // Reset error message after 3 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 3000);
-      } finally {
+    } finally {
       setIsSubmitting(false);
     }
   };
