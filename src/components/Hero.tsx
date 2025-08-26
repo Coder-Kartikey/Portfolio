@@ -51,10 +51,9 @@ export default function Hero() {
   };
 
   return (
-    <div
-      className="flex items-center justify-center relative pt-16"
-      style={{ minHeight: 'calc(100vh - var(--header-height, 64px))' }}
-    >
+    <div className="flex items-center justify-center relative pt-16 md:min-h-screen">
+      {/* Mobile min-height wrapper */}
+      <div className="absolute inset-0 block md:hidden" style={{ minHeight: 'calc(100vh - var(--header-height, 64px))', zIndex: -1 }} />
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div

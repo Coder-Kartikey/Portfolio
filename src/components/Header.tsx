@@ -119,29 +119,28 @@ export default function Header( { activeSection }: HeaderProps) {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-gray-800"
-          >
-            <div className="flex flex-col space-y-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-left px-4 py-2 rounded-lg transition-colors ${
-                    activeSection === item.id 
-                      ? 'text-blue-400 bg-gray-800' 
-                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-              {/* Resume button removed from mobile menu since it's now always visible */}
-            </div>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden absolute left-0 right-0 top-16 w-full bg-gray-900/95 z-40 py-4 border-t border-gray-800 shadow-lg"
+            >
+              <div className="flex flex-col space-y-2 px-4">
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`text-left px-4 py-2 rounded-lg transition-colors ${
+                      activeSection === item.id 
+                        ? 'text-blue-400 bg-gray-800' 
+                        : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
           )}
         </div>
       </div>
