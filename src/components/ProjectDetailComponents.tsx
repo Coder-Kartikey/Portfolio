@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from 'framer-motion';
-import { Calendar, Users, Monitor, CheckCircle, ImageIcon, Play, Github } from 'lucide-react';
+import { Calendar, Users, Monitor, CheckCircle, ImageIcon, Play, Github, TestTube2, ClipboardCopy } from 'lucide-react';
 import { ProjectData } from '../data/projectsData';
 
 interface ProjectHeroProps {
@@ -67,12 +67,12 @@ export function ProjectHero({ project, onBack }: ProjectHeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="flex items-center space-x-4 mb-6">
+            <div className="flex items-center lg:items-start space-x-4 mb-2">
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg"
+                className="w-16 h-16 bg-gradient-to-br px-4 rounded-full from-blue-600 to-blue-500 flex items-center justify-center shadow-lg"
               >
-                <project.icon size={36} className="text-white" />
+                <project.icon size={32} className="text-white" />
               </motion.div>
               <div>
                 <div className="flex items-center space-x-3 mb-2">
@@ -163,70 +163,21 @@ export function ProjectHero({ project, onBack }: ProjectHeroProps) {
               ))}
             </div>
           </motion.div>
-          <ProjectLiveDemoAndPreview project={project} />
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-6"
+          >
+            {/* Animated Demo Preview */}
+            <ProjectLiveDemo project={project} />
+
+            {/* Project Preview */}
+            <ProjectPreview project={project} />
+          </motion.div>
         </div>
       </div>
     </div>
-  );
-}
-
-interface ProjectMetricsAndPreviewProps {
-  project: ProjectData;
-}
-
-export function ProjectLiveDemoAndPreview({ project }: ProjectMetricsAndPreviewProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.4 }}
-      className="space-y-6"
-    >
-      {/* Animated Demo Preview */}
-      <ProjectLiveDemo project={project} />
-
-      {/* Project Preview Gallery */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl border border-gray-700"
-      >
-        <div className="flex items-center space-x-2 mb-4">
-          <ImageIcon size={20} className="text-blue-400" />
-          <h3 className="text-blue-400">Screenshots</h3>
-        </div>
-        <div className="grid grid-cols-1 gap-4">
-          {project.previewImages.map((imageUrl, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 1.2 + index * 0.2 }}
-              whileHover={{ scale: 1.02, y: -2 }}
-              className="relative group cursor-pointer overflow-hidden rounded-lg border border-gray-600 hover:border-blue-400/50 transition-all duration-300"
-            >
-              <img
-                src={imageUrl}
-                alt={`${project.title} preview ${index + 1}`}
-                className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-2 left-2 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 px-2 py-1 rounded">
-                Screenshot {index + 1}
-              </div>
-              <motion.div
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-                className="absolute top-2 right-2 w-8 h-8 bg-blue-500/80 rounded-full flex items-center justify-center backdrop-blur-sm"
-              >
-                <ImageIcon size={14} className="text-white" />
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </motion.div>
   );
 }
 
@@ -376,6 +327,152 @@ export function ProjectLiveDemo({ project }: ProjectLiveDemoProps) {
       )}
     </motion.div>
   );
+}
+
+interface ProjectPreviewImageGalleryProps {
+  project: ProjectData;
+}
+
+export function ProjectPreviewImageGallery({ project }: ProjectPreviewImageGalleryProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1 }}
+      className="bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl border border-gray-700"
+    >
+      <div className="flex items-center space-x-2 mb-4">
+        <ImageIcon size={20} className="text-blue-400" />
+        <h3 className="text-blue-400">Screenshots</h3>
+      </div>
+      <div className="grid grid-cols-1 gap-4">
+        {project.previewImages.map((imageUrl, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1.2 + index * 0.2 }}
+            whileHover={{ scale: 1.02, y: -2 }}
+            className="relative group cursor-pointer overflow-hidden rounded-lg border border-gray-600 hover:border-blue-400/50 transition-all duration-300"
+          >
+            <img
+              src={imageUrl}
+              alt={`${project.title} preview ${index + 1}`}
+              className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-2 left-2 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 px-2 py-1 rounded">
+              Screenshot {index + 1}
+            </div>
+            <motion.div
+              initial={{ scale: 0 }}
+              whileHover={{ scale: 1 }}
+              className="absolute top-2 right-2 w-8 h-8 bg-blue-500/80 rounded-full flex items-center justify-center backdrop-blur-sm"
+            >
+              <ImageIcon size={14} className="text-white" />
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+interface ProjectPreviewApiTestingProps {
+  project: ProjectData;
+}
+
+export function ProjectPreviewApiTesting ({ project}: ProjectPreviewApiTestingProps) {
+  if (!project.apiTesting) {
+    return <ProjectPreviewImageGallery project={project} />;
+  }
+  
+  const { header, endpoint, authentication, demoData } = project.apiTesting;
+  
+  function copyToClipboard(text: string) {
+    navigator.clipboard.writeText(text);
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 1 }}
+      className="bg-gray-800/70 backdrop-blur-sm p-6 rounded-xl border border-gray-700"
+    >
+      <div className="flex items-center space-x-2 mb-4">
+        <TestTube2 size={20} className="text-blue-400" />
+        <h3 className="text-blue-400">{header}</h3>
+      </div>
+      
+      <div className="space-y-4 text-sm">
+        {/* Endpoint */}
+        <div>
+          <h4 className="font-semibold text-gray-300">API Endpoint</h4>
+          <div className="flex items-center mt-1 bg-gray-900 p-2 rounded border border-gray-600">
+            <code className="text-green-400 flex-grow text-xs">{endpoint}</code>
+            <button type="button" aria-label="Copy to clipboard" onClick={() => copyToClipboard(endpoint)} className="ml-2 text-gray-400 hover:text-white">
+              <ClipboardCopy size={14} />
+            </button>
+          </div>
+        </div>
+
+        {/* Authentication */}
+        <div>
+          <h4 className="font-semibold text-gray-300">{authentication.heading}</h4>
+          <p className="text-gray-400 text-xs mb-1">Method: {authentication.method}</p>
+          <div className="flex items-center mt-1 bg-gray-900 p-2 rounded border border-gray-600">
+            <code className="text-purple-400 flex-grow text-xs truncate">{authentication.bearerToken}</code>
+            <button type="button" aria-label="Copy to clipboard" onClick={() => copyToClipboard(authentication.bearerToken)} className="ml-2 text-gray-400 hover:text-white">
+              <ClipboardCopy size={14} />
+            </button>
+          </div>
+        </div>
+
+        {/* Portal */}
+        <div>
+          <h4 className="font-semibold text-gray-300">{demoData.portal.heading}</h4>
+          <p className="text-gray-400 text-xs mb-1">{demoData.portal.description}</p>
+          <div className="relative mt-1 bg-gray-900 p-2 rounded border border-gray-600">
+            <pre className="text-yellow-400 text-xs whitespace-pre-wrap overflow-x-auto">
+              <code>{demoData.portal.requestBody}</code>
+            </pre>
+            <button type="button" aria-label="Copy to clipboard" onClick={() => copyToClipboard(demoData.portal.requestBody)} className="absolute top-2 right-2 text-gray-400 hover:text-white">
+              <ClipboardCopy size={14} />
+            </button>
+          </div>
+        </div>
+
+        {/* cURL */}
+        <div>
+          <h4 className="font-semibold text-gray-300">{demoData.curl.heading}</h4>
+          <p className="text-gray-400 text-xs mb-1">{demoData.curl.description}</p>
+          <div className="relative mt-1 bg-gray-900 p-2 rounded border border-gray-600">
+            <pre className="text-yellow-400 text-xs whitespace-pre-wrap overflow-x-auto">
+              <code>{demoData.curl.requestBody}</code>
+            </pre>
+            <button type="button" aria-label="Copy to clipboard" onClick={() => copyToClipboard(demoData.curl.requestBody)} className="absolute top-2 right-2 text-gray-400 hover:text-white">
+              <ClipboardCopy size={14} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+interface ProjectPreviewProps {
+  project: ProjectData;
+}
+
+export function ProjectPreview({ project }: ProjectPreviewProps) {
+  // Logic to decide which component to render
+  if (project.previewOption === 'apiTesting' && project.apiTesting) {
+    return <ProjectPreviewApiTesting project={project} />;
+  }
+
+  // Default/Fallback preview
+  return <ProjectPreviewImageGallery project={project} />;
 }
 
 

@@ -1,4 +1,5 @@
 import { Brain, Code, Database, Users, Zap, CheckCircle, Star, Layers, Smartphone } from 'lucide-react';
+import { TbChartInfographic, TbTargetArrow, TbSum, TbActivity, TbClock, TbGauge, TbSearch, TbLock } from 'react-icons/tb';
 
 // Category order and labels for filter toggler (customize as needed)
 export const categoryOrder: { id: string; label: string }[] = [
@@ -13,10 +14,32 @@ export interface ProjectData {
   subtitle: string;
   description: string;
   image: string;
+  previewOption: string;
+  apiTesting?: {
+    header: string;
+    endpoint: string;
+    authentication: {
+      heading: string;
+      method: string;
+      bearerToken: string;
+    };
+    demoData: {
+      portal: {
+        heading: string;
+        description: string;
+        requestBody: string;
+      };
+      curl: {
+        heading: string;
+        description: string;
+        requestBody: string;
+      };
+    };
+  };
   previewImages: string[];
   animatedPreview: string;
   tags: string[];
-  category: string;
+  category: string; // Currently Available Categories: ai, fullstack
   github: string;
   live: string;
   icon: any;
@@ -45,6 +68,7 @@ export const projectsData: Record<number, ProjectData> = {
     subtitle: 'Artificial Intelligence-Powered Real-Time Communication Platform',
     description: 'A sophisticated real-time chat application leveraging OpenAI\'s advanced GPT models to deliver intelligent, context-aware conversations. This enterprise-grade solution features seamless real-time messaging, AI-powered response generation, persistent conversation memory, and comprehensive user management.',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop',
+    previewOption: "previewImages",
     previewImages: [
       'https://images.unsplash.com/photo-1725798451557-fc60db3eb6a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGF0JTIwYXBwbGljYXRpb24lMjBpbnRlcmZhY2UlMjBtb2JpbGV8ZW58MXx8fHwxNzU1Nzg0OTY0fDA&ixlib=rb-4.1.0&q=80&w=1080',
       'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
@@ -111,6 +135,7 @@ export const projectsData: Record<number, ProjectData> = {
     subtitle: 'Full-Stack E-Commerce Solution with Advanced Analytics',
     description: 'A comprehensive, scalable e-commerce platform featuring modern UI/UX design, secure payment processing, intelligent inventory management, and powerful admin analytics dashboard. Built with performance, security, and user experience as core priorities.',
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=600&fit=crop',
+    previewOption: "previewImages",
     previewImages: [
       'https://images.unsplash.com/photo-1629963918958-1b62cfe3fe92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlY29tbWVyY2UlMjBkYXNoYm9hcmQlMjBhbmFseXRpY3N8ZW58MXx8fHwxNzU1NjkyODYxfDA&ixlib=rb-4.1.0&q=80&w=1080',
       'https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&h=600&fit=crop',
@@ -177,10 +202,11 @@ export const projectsData: Record<number, ProjectData> = {
     subtitle: 'Advanced Deep Learning Image Recognition System',
     description: 'A sophisticated machine learning application utilizing state-of-the-art deep neural networks for high-accuracy image classification. Features include real-time prediction capabilities, comprehensive model training interface, and detailed analytics dashboard for performance monitoring.',
     image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&h=600&fit=crop',
+    previewOption: "previewImages",
     previewImages: [
       'https://images.unsplash.com/photo-1717583191083-cd82ed7f217e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWNoaW5lJTIwbGVhcm5pbmclMjB2aXN1YWxpemF0aW9ufGVufDF8fHx8MTc1NTY5Mzg3Mnww&ixlib=rb-4.1.0&q=80&w=1080',
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=600&fit=crop'
+      // 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=600&fit=crop'
     ],
     animatedPreview: 'https://images.unsplash.com/photo-1714846201670-1c5721196c7a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZXJtaW5hbCUyMGNvZGluZyUyMG1vbml0b3J8ZW58MXx8fHwxNzU1Nzg3MTk1fDA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Python', 'TensorFlow', 'FastAPI', 'Docker', 'AWS', 'OpenCV', 'Keras'],
@@ -242,6 +268,7 @@ export const projectsData: Record<number, ProjectData> = {
     subtitle: 'Collaborative Mobile Task Management',
     description: 'A mobile-first task management application with real-time sync, collaborative features, and push notifications. Built for productivity on the go.',
     image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1200&h=600&fit=crop',
+    previewOption: "previewImages",
     previewImages: [
       'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=600&fit=crop'
@@ -304,6 +331,7 @@ export const projectsData: Record<number, ProjectData> = {
     subtitle: 'Interactive Data Visualization Platform',
     description: 'An interactive dashboard for data visualization and analytics with real-time updates and customizable widgets.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop',
+    previewOption: "previewImages",
     previewImages: [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
@@ -364,7 +392,8 @@ export const projectsData: Record<number, ProjectData> = {
     title: 'AI Content Generator',
     subtitle: 'Automated Content Creation Tool',
     description: 'A powerful AI-driven tool for generating high-quality content in various formats, including articles, blogs, and social media posts.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=600&fit=crop',
+    previewOption: "previewImages",
     previewImages: [
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
       'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop'
@@ -417,6 +446,241 @@ export const projectsData: Record<number, ProjectData> = {
       'Real-time Previews',
       'Customizable Templates',
       'User Feedback Integration'
+    ]
+  },
+  7: {
+    id: 7,
+    title: "Warden AI",
+    subtitle: "A CNN-based Image Classifier for Early Wildfire Detection",
+    description: "This project leverages a custom-built Convolutional Neural Network (CNN) to accurately classify fire and non-fire images from aerial and ground-level sources. It's designed as a scalable proof-of-concept for early warning systems to aid in rapid disaster response.",
+    image: "https://images.unsplash.com/photo-1628197768574-e1b1e9b6f1a8?q=80&w=1953&auto=format&fit=crop",
+    previewOption: "previewImages",
+    previewImages: [
+      "https://images.unsplash.com/photo-1562285116-235a9f244195?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1628197768574-e1b1e9b6f1a8?q=80&w=1953&auto=format&fit=crop"
+    ],
+    animatedPreview: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2RtaHhlZnZidmR2OXlscHk3dDVoaDk2bHV1Z3p6aW9wOWJmaHczNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L8yQ02hI2w5sQ/giphy.gif",
+    tags: ["Python", "TensorFlow", "Keras", "OpenCV", "NumPy", "Deep Learning", "CNN"],
+    category: 'ai',
+    github: "https://github.com/Coder-Kartikey/Forest_Fire_Detection_using_DL",
+    live: "",
+    // https://colab.research.google.com/drive/1EsyB40L9MNr62ahhmZXAaC_f1hLIrIvi?usp=sharing
+    icon: Brain,
+    timeline: "3 Months",
+    team: "Individual Project",
+    status: "Completed",
+    overview: "A high-accuracy image classifier designed for early wildfire detection from aerial imagery to enable rapid disaster response.",
+    highlights: [
+      "Custom CNN Model",
+      "High Classification Accuracy",
+      "Robust Image Preprocessing",
+      "Scalable Data Pipeline"
+    ],
+    technicalDetails: {
+      CoreFrameworks: "TensorFlow backend with the Keras API for rapid model prototyping and training.",
+      Language: "Python, chosen for its extensive data science and machine learning ecosystem.",
+      KeyLibraries: "NumPy for data handling, OpenCV for image processing, and Matplotlib for visualization.",
+      ModelArchitecture: "Custom Sequential CNN with Conv2D, MaxPooling, and Dropout layers for classification.",
+      Environment: "Developed in Jupyter Notebooks and trained on Google Colab with GPU acceleration.",
+      Dataset: "Trained on a diverse, open-source dataset of labeled fire & non-fire images."
+    },
+    challenges: [
+      {
+        problem: "The initial model struggled with false positives, often misclassifying sunsets or fog as fires.",
+        solution: "I solved this by implementing targeted data augmentation—adjusting brightness, contrast, and adding varied non-fire examples—to help the model learn more robust and distinguishing features."
+      },
+      {
+        problem: "Overfitting was a significant issue due to the limited size of the initial dataset.",
+        solution: "To combat this, I introduced Dropout layers in the CNN architecture, which randomly deactivates neurons during training to prevent over-reliance on specific features and improve generalization."
+      }
+    ],
+    metrics: [
+      {
+        label: "Validation Accuracy",
+        value: "92%",
+        icon: TbChartInfographic
+      },
+      {
+        label: "Precision",
+        value: "91%",
+        icon: TbTargetArrow
+      },
+      {
+        label: "Recall",
+        value: "90%",
+        icon: TbActivity
+      },
+      {
+        label: "F1-Score",
+        value: "90.5%",
+        icon: TbSum
+      }
+    ],
+    keyFeatures: [
+      "Binary Image Classification",
+      "Data Augmentation",
+      "Custom CNN",
+      "End-to-End Evaluation"
+    ]
+  },
+  8: {
+    id: 8,
+    title: "INSIGHT ENGINE",
+    subtitle: "An Intelligent Query-Retrieval System for Unstructured Documents",
+    description: "Built for the multi-level Bajaj Finserv HackRx 6.0 challenge, this high-throughput API uses a sophisticated RAG pipeline to answer natural language questions from large documents. The system successfully passed Level 4 testing, demonstrating its capability under demanding performance benchmarks.",
+    image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2070&auto=format&fit=crop",
+    previewOption: "apiTesting",
+    // apiTesting: {
+    //   header: "API Testing",
+    //   bearerTocken: "b7be0d0c6cb51a6c84e190a66d4542526361d32d3df9035b4c8a00b9198df385",
+    //   demoData: {
+    //     default: {
+    //       heading: "Testing on My portal",
+    //       requests: `{
+    //            "documents": "https://hackrx.blob.core.windows.net/assets/policy.pdf?sv=2023-01-03&st=2025-07-04T09%3A11%3A24Z&se=2027-07-05T09%3A11%3A00Z&sr=b&sp=r&sig=N4a9OU0w0QXO6AOIBiu4bpl7AXvEZogeT%2FjUHNO7HzQ%3D",
+    //            "questions": [
+    //                "What is the grace period for premium payment under the National Parivar Mediclaim Plus Policy?",
+    //                "What is the waiting period for pre-existing diseases (PED) to be covered?",
+    //                "Does this policy cover maternity expenses, and what are the conditions?",
+    //                "What is the waiting period for cataract surgery?",
+    //                "Are the medical expenses for an organ donor covered under this policy?",
+    //                "What is the No Claim Discount (NCD) offered in this policy?",
+    //                "Is there a benefit for preventive health check-ups?",
+    //                "How does the policy define a 'Hospital'?",
+    //                "What is the extent of coverage for AYUSH treatments?",
+    //                "Are there any sub-limits on room rent and ICU charges for Plan A?"
+    //            ]
+    //       }`
+    //       note: "Use Baerer token for authentication then use demo this in post request body. You can change Document address and questions."
+    //     }
+    //     custom: {
+    //       heading: "Testing on Other API Testing Platforms",
+    //       requests: `curl -X POST "https://your-hosted-api-url.com/hackrx/run" \
+    //            -H "Content-Type: application/json" \
+    //            -H "Authorization: Bearer b7be0d0c6cb51a6c84e190a66d4542526361d32d3df9035b4c8a00b9198df385" \
+    //            -d '{
+    //              "documents": "https://hackrx.blob.core.windows.net/assets/policy.pdf?sv=2023-01-03&st=2025-07-04T09%3A11%3A24Z&se=2027-07-05T09%3A11%3A00Z&sr=b&sp=r&sig=N4a9OU0w0QXO6AOIBiu4bpl7AXvEZogeT%2FjUHNO7HzQ%3D",
+    //              "questions": [
+    //                "What is the grace period for premium payment under the National Parivar Mediclaim Plus Policy?",
+    //                "What is the waiting period for pre-existing diseases (PED) to be covered?",
+    //                "Does this policy cover maternity expenses, and what are the conditions?",
+    //                "What is the waiting period for cataract surgery?",
+    //                "Are the medical expenses for an organ donor covered under this policy?",
+    //                "What is the No Claim Discount (NCD) offered in this policy?",
+    //                "Is there a benefit for preventive health check-ups?",
+    //                "How does the policy define a 'Hospital'?",
+    //                "What is the extent of coverage for AYUSH treatments?",
+    //                "Are there any sub-limits on room rent and ICU charges for Plan A?"
+    //              ]
+    //       }'`
+    //       note: "Use this cURL for testing api in other Plateforms like Postman, Hoppscotch. You can change Document address and questions."
+    //     }
+    //   }
+    // },
+    apiTesting: {
+      header: "Interactive API Endpoint",
+      endpoint: "https://your-hosted-api-url.com/hackrx/run", // Add your deployed API URL here
+      authentication: {
+        heading: "Authentication",
+        method: "Bearer Token",
+        bearerToken: "b7be0d0c6cb51a6c84e190a66d4542526361d32d3df9035b4c8a00b9198df85" // Corrected token from your code
+      },
+      demoData: {
+        portal: {
+          heading: "Test on My Portal",
+          description: "Use the Bearer Token above for authentication and paste the JSON below into your request body. Feel free to change the document URL or the questions to test the pipeline with your own data.",
+          requestBody: `{
+  "documents": "https://hackrx.blob.core.windows.net/assets/policy.pdf?sv=2023-01-03&st=2025-07-04T09%3A11%3A24Z&se=2027-07-05T09%3A11%3A00Z&sr=b&sp=r&sig=N4a9OU0w0QXO6AOIBiu4bpl7AXvEZogeT%2FjUHNO7HzQ%3D",
+  "questions": [
+    "What is the grace period for premium payment?",
+    "What is the waiting period for pre-existing diseases?",
+    "Does this policy cover maternity expenses?"
+  ]
+}`
+        },
+        curl: {
+          heading: "Test with cURL",
+          description: "Use this cURL command in your terminal for a quick test. This is also a great starting point for testing with other tools like Postman or Hoppscotch.",
+          requestBody: `curl -X POST "https://your-hosted-api-url.com/hackrx/run" \\
+-H "Authorization: Bearer b7be0d0c6cb51a6c84e190a66d4542526361d32d3df9035b4c8a00b9198df85" \\
+-H "Content-Type: application/json" \\
+-d '{
+  "documents": "https://hackrx.blob.core.windows.net/assets/policy.pdf?sv=2023-01-03&st=2025-07-04T09%3A11%3A24Z&se=2027-07-05T09%3A11%3A00Z&sr=b&sp=r&sig=N4a9OU0w0QXO6AOIBiu4bpl7AXvEZogeT%2FjUHNO7HzQ%3D",
+  "questions": ["What is the No Claim Discount (NCD)?"]
+}'`
+        }
+      }
+    },
+    previewImages: [
+      // "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=2070&auto=format&fit=crop"
+    ],
+    animatedPreview: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDBkYmRja2Y0dDNxd3l5ZW85a3pxNTF0b250bmNqZ2o0dXZ1NXd0dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L8yQ02hI2w5sQ/giphy.gif",
+    tags: ["Python", "FastAPI", "LangChain", "Gemini", "RAG", "Vector Database", "Faiss", "BM25"],
+    category: 'ai',
+    github: "https://github.com/Coder-Kartikey/HACKRX6.0-1",
+    live: "https://hackrx-bajaj-api.onrender.com/docs", // Add the link to your Hugging Face Space demo here
+    icon: Brain,
+    timeline: "Hackathon Project",
+    team: "Solo Contribution",
+    status: "Completed",
+    overview: "A robust RAG API that passed Level 4 of the HackRx 6.0 hackathon, proving its high accuracy and performance under pressure.",
+    highlights: [
+      "Advanced Fusion Retrieval",
+      "High-Throughput API",
+      "Hackathon Level 4",
+      "Async API Design"
+    ],
+    technicalDetails: {
+      CoreFramework: "A robust REST API built with FastAPI for high-performance, asynchronous capabilities.",
+      Language: "Developed entirely in Python, leveraging its powerful AI and web service ecosystem.",
+      AIIntegration: "Utilized Google's Gemini Pro for answer generation and `embedding-001` for text embeddings.",
+      RetrievalMethod: "A hybrid 'Fusion Retrieval' strategy combining BM25Retriever with Faiss vector search.",
+      CoreLibraries: "LangChain for RAG orchestration, PyMuPDF for PDF parsing, and aiohttp for async API calls.",
+      KeyFeature: "Engineered a dynamic API key rotation to manage rate limits and maximize throughput."
+    },
+    challenges: [
+      {
+        problem: "The primary challenge was rapidly learning and implementing a full RAG pipeline with unfamiliar technologies like FastAPI and vector databases to meet the hackathon's competitive benchmarks.",
+        solution: "I adopted a focused, modular approach, mastering each component—document parsing, embedding, and the API server—iteratively. This strategy allowed me to build a functional and high-performing prototype."
+      },
+      {
+        problem: "The API began to fail under the increasing load of the higher-level tests due to rate limits on a single Gemini API key.",
+        solution: "I engineered a creative solution by implementing a pool of API keys. The system dynamically cycles through keys for each request using `aiohttp`, ensuring high availability and successfully passing the hackathon's stress tests."
+      }
+    ],
+    metrics: [
+      {
+        label: "Avg. Response Time",
+        value: "<1200ms",
+        icon: TbClock
+      },
+      {
+        label: "Retrieval Accuracy",
+        value: "High",
+        icon: TbSearch
+      },
+      // {
+      //   label: "Auth Bearer Code",
+      //   value: "b7be0d0c6cb51a6c84e190a66d4542526361d32d3df9035b4c8a00b9198df385",
+      //   icon: TbLock
+      // },
+      {
+        label: "API Security Authentication",
+        value: "Bearer Token",
+        icon: TbLock
+      },
+      {
+        label: "API Throughput",
+        value: "Optimized",
+        icon: TbGauge
+      }
+    ],
+    keyFeatures: [
+      "RAG Pipeline API",
+      "Fusion Retrieval",
+      "Dynamic Key Rotation",
+      "PDF Document Processing"
     ]
   }
 };
