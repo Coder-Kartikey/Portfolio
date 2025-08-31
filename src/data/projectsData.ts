@@ -343,11 +343,11 @@ export const projectsData: Record<number, ProjectData> = {
     category: 'cybersecurity',
     subtitle: "A Python-based Steganography Tool for Hiding Data in Images",
     description: "InvisiData is a command-line tool that encodes and decodes secret text messages within PNG images using the Least Significant Bit (LSB) steganography technique. This project showcases algorithmic thinking and low-level data manipulation with Python.",
-    image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto.format&fit.crop",
+    image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop",
     previewImages: [
       "https://images.unsplash.com/photo-1618335829737-2228915674e0?q=80&w=2070&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1562911791-c7a97b729ec5?q=80&w=1964&auto.format&fit.crop",
+      "https://images.unsplash.com/photo-1562911791-c7a97b729ec5?q=80&w=1964&auto=format&fit=crop",
     ],
     animatedPreview: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Zua3dha3Nwc3BzaDExcm5kZzh6cGl4Mnl4dW40aWJ3dHJucHhkaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VbPG1c33d2Soo/giphy.gif",
     tags: ["Python", "OpenCV", "NumPy", "Steganography", "Algorithms", "Cyber Security"],

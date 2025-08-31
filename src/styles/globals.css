@@ -130,7 +130,7 @@
       height: 4px;
     }
     pre::-webkit-scrollbar-thumb {
-      background: rgb(128, 128, 128, 0.25);
+      background: rgba(128, 128, 128, 0.25);
       border-radius: 10px;
     }
     pre::-webkit-scrollbar-thumb:hover {
