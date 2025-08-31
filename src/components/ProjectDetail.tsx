@@ -33,14 +33,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
       <ProjectHero project={project} onBack={onBack} />
 
       {/* Content Sections */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <ProjectInfoCards project={project} isInView={isInView} />
-        {/* Key Highlights */}
+        {/* Key Highlights  */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-16"
+          className="mb-16 lg:hidden"
         >
           <h3 className="text-3xl mb-8 text-center">
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
