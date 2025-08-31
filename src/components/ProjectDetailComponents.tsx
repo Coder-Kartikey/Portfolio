@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { categoryOrder } from '../data/projectsData';
 import { motion } from 'framer-motion';
 import { toast } from "sonner";
 import { Calendar, Users, Monitor, CheckCircle, ImageIcon, Play, Github, ClipboardCopy, Check } from 'lucide-react';
@@ -816,7 +817,12 @@ export function ProjectInfoCards({ project, isInView }: ProjectInfoCardsProps) {
             <Monitor className="text-blue-400" size={24} />
             <h3 className="text-blue-400 text-lg">Category</h3>
           </div>
-          <p className="text-3xl mb-2 capitalize">{project.category}</p>
+          <p className="text-3xl mb-2 capitalize">
+            {(() => {
+              const found = categoryOrder.find(cat => cat.id === project.category);
+              return found ? found.label : project.category;
+            })()}
+          </p>
           <p className="text-gray-400">Project Type</p>
         </motion.div>
       </motion.div>
