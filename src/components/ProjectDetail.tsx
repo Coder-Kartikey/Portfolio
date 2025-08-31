@@ -33,14 +33,14 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
       <ProjectHero project={project} onBack={onBack} />
 
       {/* Content Sections */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <ProjectInfoCards project={project} isInView={isInView} />
-        {/* Key Highlights */}
+        {/* Key Highlights  */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-16"
+          className="mb-16 lg:hidden"
         >
           <h3 className="text-3xl mb-8 text-center">
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -81,24 +81,24 @@ export default function ProjectDetail({ projectId, onBack }: ProjectDetailProps)
               Technical Implementation
             </span>
           </h3>
-          <div className="space-y-6">
+            <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-6">
             {Object.entries(project.technicalDetails).map(([category, details], index) => (
               <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                whileHover={{ scale: 1.01, y: -2 }}
-                className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
+              key={category}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+              whileHover={{ scale: 1.01, y: -2 }}
+              className="bg-gradient-to-br from-gray-800 to-gray-900/95 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
               >
-                <h4 className="text-xl text-blue-400 mb-4 flex items-center space-x-2">
-                  <Code size={20} />
-                  <span>{category}</span>
-                </h4>
-                <p className="text-gray-300 leading-relaxed">{details}</p>
+              <h4 className="text-xl text-blue-400 mb-4 flex items-center space-x-2">
+                <Code size={20} />
+                <span>{category}</span>
+              </h4>
+              <p className="text-gray-300 leading-relaxed">{details}</p>
               </motion.div>
             ))}
-          </div>
+            </div>
         </motion.div>
 
         {/* Challenges & Solutions */}

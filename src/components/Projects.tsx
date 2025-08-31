@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Github } from 'lucide-react';
 import { projectsData, categoryOrder } from '../data/projectsData';
-// import * as LucideIcons from 'lucide-react';
 
 interface ProjectsProps {
   onProjectSelect?: (projectId: number) => void;
@@ -58,7 +57,7 @@ export default function Projects({ onProjectSelect }: ProjectsProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center mb-12"
         >
-          <div className="flex flex-wrap gap-2 p-2 bg-gray-900 rounded-lg border border-gray-700">
+          <div className="flex flex-wrap gap-2 p-2 items-center justify-center bg-gray-900 rounded-lg border border-gray-700">
             {categories.map((category) => (
               <motion.button
                 key={category.id}
