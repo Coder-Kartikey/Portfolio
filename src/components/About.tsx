@@ -141,7 +141,7 @@ export default function About() {
                 >
                   👋
                 </motion.div>
-                <h3 className="text-3xl text-blue-400">Hello, World!</h3>
+                <h3 className="text-3xl text-blue-400">Hello, World! I'm</h3>
               </div>
 
               {/* Quick intro tagline */}
