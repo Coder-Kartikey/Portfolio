@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import { Menu, X, FileText } from 'lucide-react';
 import logoImage from '../assets/images/logo-image.png';
-import resume from '../assets/pdfs/resume.pdf';
+const resume = '../assets/files/resume.pdf';
 
 interface HeaderProps {
   activeSection: string;
@@ -15,6 +15,7 @@ export default function Header( { activeSection }: HeaderProps) {
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
+    // { id: 'timeline', label: 'Journey' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
     { id: 'contact', label: 'Contact' }
