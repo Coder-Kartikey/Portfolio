@@ -16,7 +16,7 @@ import {
   Crown,
   Building
 } from 'lucide-react';
-import { TbTrophy } from "react-icons/tb";
+
 export default function Timeline() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -165,7 +165,7 @@ export default function Timeline() {
           'Implemented advanced fusion retrieval'
         ],
         skills: ['Generative AI', 'FastAPI', 'LangChain', 'Python'],
-        icon: TbTrophy as ElementType,
+        icon: Trophy,
         color: 'from-yellow-500 to-orange-500',
         bgColor: 'bg-yellow-500/10'
       },
