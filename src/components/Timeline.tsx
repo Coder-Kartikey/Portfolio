@@ -1,26 +1,22 @@
 import React, { useRef, useState } from "react";
+import type { ElementType } from 'react';
 import { motion, useInView } from "framer-motion";
-import { 
-  Briefcase, 
-  Trophy, 
-  GraduationCap, 
-  Users, 
-  Calendar, 
-  MapPin, 
-  Award, 
-  Code, 
-  Rocket, 
-  Zap,
+import {
+  Briefcase,
+  Trophy,
+  GraduationCap,
+  Users,
+  MapPin,
+  Award,
+  Code,
+  Rocket,
   Star,
   CheckCircle,
-  Target,
   Lightbulb,
-  Medal,
   Crown,
-  Coffee,
   Building
 } from 'lucide-react';
-
+import { TbTrophy } from "react-icons/tb";
 export default function Timeline() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -28,7 +24,7 @@ export default function Timeline() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   // Timeline categories
-  const categories = [
+  const categories: { id: string; label: string; icon: ElementType }[] = [
     { id: 'all', label: 'All', icon: Star },
     { id: 'internships', label: 'Internships', icon: Briefcase },
     { id: 'hackathons', label: 'Hackathons', icon: Code },
@@ -36,133 +32,168 @@ export default function Timeline() {
     { id: 'leadership', label: 'Leadership', icon: Crown },
   ];
 
-  // Timeline data - you can customize this with your actual achievements
-  const timelineData = [
-    {
-      id: '1',
-      category: 'leadership',
-      type: 'Leadership',
-      title: 'Training & Placement Coordinator',
-      organization: 'Computer Science Department',
-      location: 'College Campus',
-      duration: 'Aug 2024 - Present',
-      status: 'ongoing',
-      description: 'Leading the T&P activities for CS department, organizing career guidance sessions, coordinating with companies for placement drives, and mentoring junior students.',
-      achievements: [
-        'Increased placement participation by 40%',
-        'Organized 15+ career guidance sessions',
-        'Coordinated with 25+ companies'
-      ],
-      skills: ['Leadership', 'Communication', 'Event Management'],
-      icon: Crown,
-      color: 'from-purple-500 to-pink-500',
-      bgColor: 'bg-purple-500/10'
-    },
-    {
-      id: '2',
-      category: 'hackathons',
-      type: 'Hackathon',
-      title: 'Smart India Hackathon 2024',
-      organization: 'Government of India',
-      location: 'National Level',
-      duration: 'Sep 2024',
-      status: 'completed',
-      description: 'Developed an AI-powered solution for smart city management. Built a comprehensive platform integrating IoT sensors, machine learning, and real-time analytics.',
-      achievements: [
-        'Secured Top 10 position nationally',
-        'Developed end-to-end AI solution',
-        'Led a team of 6 developers'
-      ],
-      skills: ['AI/ML', 'IoT', 'Team Leadership', 'React'],
-      icon: Trophy,
-      color: 'from-yellow-500 to-orange-500',
-      bgColor: 'bg-yellow-500/10'
-    },
-    {
-      id: '3',
-      category: 'training',
-      type: 'Certification',
-      title: 'Full Stack Web Development',
-      organization: 'Tech Training Institute',
-      location: 'Online',
-      duration: 'Jun 2024 - Aug 2024',
-      status: 'completed',
-      description: 'Comprehensive training in MERN stack development, including advanced topics like microservices, deployment strategies, and performance optimization.',
-      achievements: [
-        'Built 5+ full-stack applications',
-        'Mastered MERN stack development',
-        'Achieved 95% course completion score'
-      ],
-      skills: ['React', 'Node.js', 'MongoDB', 'Express.js'],
-      icon: GraduationCap,
-      color: 'from-green-500 to-emerald-500',
-      bgColor: 'bg-green-500/10'
-    },
-    {
-      id: '4',
-      category: 'internships',
-      type: 'Internship',
-      title: 'Frontend Development Intern',
-      organization: 'Tech Startup',
-      location: 'Remote',
-      duration: 'May 2024 - Jul 2024',
-      status: 'completed',
-      description: 'Worked on developing responsive web applications using React and modern UI frameworks. Collaborated with design team to implement pixel-perfect interfaces.',
-      achievements: [
-        'Improved app performance by 30%',
-        'Implemented 20+ UI components',
-        'Reduced loading time by 40%'
-      ],
-      skills: ['React', 'TypeScript', 'Tailwind CSS', 'Git'],
-      icon: Briefcase,
-      color: 'from-blue-500 to-cyan-500',
-      bgColor: 'bg-blue-500/10'
-    },
-    {
-      id: '5',
-      category: 'leadership',
-      type: 'Event',
-      title: 'TechFest Hackathon Organizer',
-      organization: 'College Technical Society',
-      location: 'College Campus',
-      duration: 'Mar 2024',
-      status: 'completed',
-      description: 'Organized and managed a 48-hour hackathon with 200+ participants. Handled logistics, mentoring, judging coordination, and sponsor relations.',
-      achievements: [
-        'Successfully managed 200+ participants',
-        'Coordinated with 10+ industry mentors',
-        'Secured ₹2L+ in prizes and sponsorships'
-      ],
-      skills: ['Event Management', 'Project Coordination', 'Networking'],
-      icon: Users,
-      color: 'from-indigo-500 to-purple-500',
-      bgColor: 'bg-indigo-500/10'
-    },
-    {
-      id: '6',
-      category: 'hackathons',
-      type: 'Hackathon',
-      title: 'HackIndia 2024',
-      organization: 'Tech Community',
-      location: 'Delhi',
-      duration: 'Jan 2024',
-      status: 'completed',
-      description: 'Built an AI-powered expense tracker with natural language processing for automatic categorization and smart budget recommendations.',
-      achievements: [
-        'Won Best AI Implementation Award',
-        'Integrated GPT API successfully',
-        'Completed project in 36 hours'
-      ],
-      skills: ['Python', 'OpenAI API', 'React', 'Machine Learning'],
-      icon: Zap,
-      color: 'from-orange-500 to-red-500',
-      bgColor: 'bg-orange-500/10'
-    }
-  ];
+  // Timeline data 
+  const timelineData: Array<{
+    id: string;
+    category: string;
+    type: string;
+    title: string;
+    organization: string;
+    location: string;
+    duration: string;
+    status: string;
+    description: string;
+    achievements: string[];
+    skills: string[];
+    icon: ElementType;
+    color: string;
+    bgColor: string;
+  }> = [
+      {
+        id: '1',
+        category: 'leadership',
+        type: 'Leadership',
+        title: 'Training & Placement Coordinator',
+        organization: 'T&P Cell',
+        location: 'College Campus',
+        duration: 'Aug 2024 - Present',
+        status: 'ongoing',
+        description: 'Serving as the primary liaison between the student body and potential employers. My role involves organizing career workshops, managing company outreach, and mentoring students to prepare them for recruitment processes.',
+        achievements: [
+          'Facilitating connections with tech companies',
+          'Organizing career development sessions',
+          'Mentoring junior students on resume building'
+        ],
+        skills: ['Leadership', 'Communication', 'Event Management', 'Networking'],
+        icon: Crown,
+        color: 'from-purple-500 to-pink-500',
+        bgColor: 'bg-purple-500/10'
+      },
+      {
+        id: '2',
+        category: 'leadership',
+        type: 'Leadership',
+        title: 'Organizer, SIH 2025',
+        organization: 'Smart India Hackathon',
+        location: 'College Campus',
+        duration: 'Ongoing',
+        status: 'ongoing',
+        description: 'Leading the organization of our college\'s internal Smart India Hackathon. My responsibilities include coordinating teams, mentoring participants on project ideation, and managing the overall event logistics.',
+        achievements: [
+          'Leading the largest technical event on campus',
+          'Mentoring 20+ student teams',
+          'Coordinating with faculty and judges'
+        ],
+        skills: ['Leadership', 'Project Management', 'Mentoring'],
+        icon: Users,
+        color: 'from-indigo-500 to-purple-500',
+        bgColor: 'bg-indigo-500/10'
+      },
+      {
+        id: '3',
+        category: 'training',
+        type: 'Open Source Contribution',
+        title: 'Open Source Contributor',
+        organization: 'GirlScript Summer of Code',
+        location: 'Remote',
+        duration: 'May 2024 - Aug 2024',
+        status: 'completed',
+        description: 'Contributed to various open-source projects, focusing on frontend and UI/UX enhancements using React.js. My key contribution involved a major optimization that significantly reduced page load times.',
+        achievements: [
+          'Reduced application load time by 75%',
+          'Contributed to multiple open-source codebases',
+          'Collaborated in a remote, agile environment'
+        ],
+        skills: ['Open Source', 'React.js', 'UI/UX', 'Optimization'],
+        icon: GraduationCap,
+        color: 'from-green-500 to-emerald-500',
+        bgColor: 'bg-green-500/10'
+      },
+      {
+        id: '4',
+        category: 'internships',
+        type: 'Internship',
+        title: 'Cyber Security Intern',
+        organization: 'IBM SkillsBuild',
+        location: 'Remote',
+        duration: 'Jan 2025 - Feb 2025',
+        status: 'completed',
+        description: 'Gained hands-on experience in enterprise-level security protocols. My work involved identifying security flaws in simulated applications and applying threat modeling principles to develop secure application designs.',
+        achievements: [
+          'Identified and analyzed security flaws',
+          'Applied modern threat modeling techniques',
+          'Strengthened understanding of secure design'
+        ],
+        skills: ['Cyber Security', 'Threat Modeling', 'Vulnerability Analysis'],
+        icon: Briefcase,
+        color: 'from-blue-500 to-cyan-500',
+        bgColor: 'bg-blue-500/10'
+      },
+      {
+        id: '5',
+        category: 'hackathons',
+        type: 'Hackathon',
+        title: 'Bharatiya Antariksh Hackathon 2025',
+        organization: 'ISRO',
+        location: 'National Level',
+        duration: '2025',
+        status: 'completed',
+        description: 'Developed "Warden AI," a Deep Learning project leveraging a custom CNN to detect forest fires from satellite imagery. This project was my official submission for the hackathon, focusing on aiding disaster response.',
+        achievements: [
+          'Developed a custom CNN model with TensorFlow',
+          'Achieved over 90% validation accuracy',
+          'Applied advanced computer vision techniques'
+        ],
+        skills: ['Deep Learning', 'CNN', 'TensorFlow', 'Computer Vision'],
+        icon: Trophy,
+        color: 'from-yellow-500 to-orange-500',
+        bgColor: 'bg-yellow-500/10'
+      },
+      {
+        id: '6',
+        category: 'hackathons',
+        type: 'Hackathon',
+        title: 'Level 4 Cleared in Bajaj HackRx 6.0',
+        organization: 'Bajaj Finserv',
+        location: 'Online',
+        duration: 'Multi-Stage Event',
+        status: 'completed',
+        description: 'Developed a high-throughput RAG Pipeline API using Gemini and FastAPI. Engineered an advanced fusion retrieval system and a dynamic API key rotation to handle high performance benchmarks.',
+        achievements: [
+          'Successfully cleared Level 4 testing',
+          'Engineered a high-performance RAG API',
+          'Implemented advanced fusion retrieval'
+        ],
+        skills: ['Generative AI', 'FastAPI', 'LangChain', 'Python'],
+        icon: TbTrophy as ElementType,
+        color: 'from-yellow-500 to-orange-500',
+        bgColor: 'bg-yellow-500/10'
+      },
+      {
+        id: '7',
+        category: 'hackathons',
+        type: 'Competitive Programming',
+        title: 'Finalist in Reverse CodingX',
+        organization: 'IIT Madras',
+        location: 'National Level',
+        duration: 'Jan 2025',
+        status: 'completed',
+        description: 'Achieved a finalist position among 1,841 participants in a high-pressure reverse coding competition. This required quickly analyzing complex code behavior to deduce the underlying algorithms and logic.',
+        achievements: [
+          'Ranked as a Finalist (Top Tier)',
+          'Competed against 1800+ participants',
+          'Demonstrated advanced problem-solving skills'
+        ],
+        skills: ['Algorithms', 'Problem-Solving', 'C++', 'Data Structures'],
+        icon: Trophy,
+        color: 'from-yellow-500 to-orange-500',
+        bgColor: 'bg-yellow-500/10'
+      },
+    ];
 
   // Filter timeline data based on active category
-  const filteredData = activeCategory === 'all' 
-    ? timelineData 
+  const filteredData = activeCategory === 'all'
+    ? timelineData
     : timelineData.filter(item => item.category === activeCategory);
 
   // Sort by date (assuming more recent items have higher IDs for demo)
@@ -233,11 +264,10 @@ export default function Timeline() {
               <motion.button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm transition-all duration-300 ${
-                  activeCategory === category.id
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-700'
-                }`}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm transition-all duration-300 ${activeCategory === category.id
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-700'
+                  }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -261,9 +291,8 @@ export default function Timeline() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                className={`relative flex flex-col md:flex-row items-start md:items-center ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
+                className={`relative flex flex-col md:flex-row items-start md:items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                  }`}
                 onMouseEnter={() => setHoveredItem(item.id)}
                 onMouseLeave={() => setHoveredItem(null)}
               >
@@ -283,13 +312,12 @@ export default function Timeline() {
                     y: -5,
                     rotateY: index % 2 === 0 ? 2 : -2
                   }}
-                  className={`ml-12 md:ml-0 md:w-5/12 ${
-                    index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
-                  }`}
+                  className={`ml-12 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
+                    }`}
                 >
                   <div className="group relative bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all duration-300 overflow-hidden">
                     {/* Gradient Background */}
-                    <motion.div 
+                    <motion.div
                       className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
                     />
 
@@ -297,8 +325,8 @@ export default function Timeline() {
                       {/* Header */}
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-start space-x-3">
-                          <motion.div 
-                            whileHover={{ 
+                          <motion.div
+                            whileHover={{
                               scale: 1.1,
                               rotate: [0, -5, 5, 0]
                             }}
@@ -308,13 +336,13 @@ export default function Timeline() {
                               background: `linear-gradient(135deg, ${item.color.split(' ')[1]}20, ${item.color.split(' ')[3]}20)`
                             }}
                           >
-                            <item.icon size={20} className={item.color.includes('blue') ? 'text-blue-400' : 
+                            <item.icon size={20} className={item.color.includes('blue') ? 'text-blue-400' :
                               item.color.includes('purple') ? 'text-purple-400' :
-                              item.color.includes('green') ? 'text-green-400' :
-                              item.color.includes('yellow') ? 'text-yellow-400' :
-                              item.color.includes('orange') ? 'text-orange-400' : 'text-blue-400'} />
+                                item.color.includes('green') ? 'text-green-400' :
+                                  item.color.includes('yellow') ? 'text-yellow-400' :
+                                    item.color.includes('orange') ? 'text-orange-400' : 'text-blue-400'} />
                           </motion.div>
-                          
+
                           <div>
                             <div className="flex items-center space-x-2 mb-1">
                               <span className={`px-2 py-1 text-xs rounded-full ${item.bgColor} font-medium`}>
@@ -352,7 +380,7 @@ export default function Timeline() {
                             </div>
                           </div>
                         </div>
-                        
+
                         {/* <div className="text-right">
                           <div className="flex items-center space-x-1 text-blue-400 text-sm">
                             <Calendar size={14} />
@@ -408,11 +436,11 @@ export default function Timeline() {
                     {/* Floating Effects */}
                     <motion.div
                       className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity"
-                      animate={{ 
+                      animate={{
                         rotate: 360,
                         scale: [1, 1.2, 1]
                       }}
-                      transition={{ 
+                      transition={{
                         rotate: { duration: 4, repeat: Infinity, ease: "linear" },
                         scale: { duration: 2, repeat: Infinity }
                       }}
