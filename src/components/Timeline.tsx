@@ -29,7 +29,7 @@ export default function Timeline() {
 
   // Timeline categories
   const categories = [
-    { id: 'all', label: 'All Experiences', icon: Star },
+    { id: 'all', label: 'All', icon: Star },
     { id: 'internships', label: 'Internships', icon: Briefcase },
     { id: 'hackathons', label: 'Hackathons', icon: Code },
     { id: 'training', label: 'Training', icon: GraduationCap },
@@ -211,9 +211,9 @@ export default function Timeline() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center space-x-3 mb-6">
-            <Target className="text-blue-400" size={32} />
+            {/* <Target className="text-blue-400" size={32} /> */}
             <h2 className="text-4xl">Journey & Achievements</h2>
-            <Target className="text-blue-400" size={32} />
+            {/* <Target className="text-blue-400" size={32} /> */}
           </div>
           <div className="w-24 h-1 bg-blue-400 mx-auto mb-8"></div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -228,7 +228,7 @@ export default function Timeline() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center mb-12"
         >
-          <div className="flex flex-wrap gap-2 p-2 bg-gray-800 rounded-xl border border-gray-700">
+          <div className="flex justify-center flex-wrap gap-2 p-2 bg-gray-800 rounded-xl border border-gray-700">
             {categories.map((category) => (
               <motion.button
                 key={category.id}
@@ -353,12 +353,12 @@ export default function Timeline() {
                           </div>
                         </div>
                         
-                        <div className="text-right">
+                        {/* <div className="text-right">
                           <div className="flex items-center space-x-1 text-blue-400 text-sm">
                             <Calendar size={14} />
                             <span>{item.duration}</span>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
 
                       {/* Description */}
@@ -469,7 +469,7 @@ export default function Timeline() {
               <Lightbulb className="text-yellow-400" size={24} />
             </div>
             <p className="text-gray-400 mb-4">
-              Every experience shapes the developer I'm becoming. Ready to add your project to this timeline?
+              Every experience shapes the developer I'm becoming.
             </p>
             <motion.div
               animate={{ y: [0, -2, 0] }}
