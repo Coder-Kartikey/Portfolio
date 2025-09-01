@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import { Menu, X, FileText } from 'lucide-react';
 import logoImage from '../assets/images/logo-image.png';
-const resume = '../assets/files/resume.pdf';
+import resume from '../assets/pdfs/resume.pdf';
 
 interface HeaderProps {
   activeSection: string;
