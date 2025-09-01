@@ -1,19 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { Toaster } from './components/ui/sonner';
 
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+// import Timeline from './components/Timeline';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
+import Loader from './components/Loader';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [currentView, setCurrentView] = useState('home');
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
+
+  // Check if this is the first visit
+  useEffect(() => {
+    const hasVisited = sessionStorage.getItem('portfolioVisited');
+    if (!hasVisited) {
+      setIsLoading(true);
+      setShowLoader(true);
+      sessionStorage.setItem('portfolioVisited', 'true');
+    }
+  }, []);
 
   // Handle URL-based routing
   useEffect(() => {
@@ -41,9 +56,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (currentView === 'home') {
+    if (currentView === 'home' && !isLoading) {
       const handleScroll = () => {
-        const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+        const sections = ['home', 'about', 'timeline', 'skills', 'projects', 'contact'];
         const currentSection = sections.find(section => {
           const element = document.getElementById(section);
           if (element) {
@@ -61,7 +76,7 @@ function App() {
       window.addEventListener('scroll', handleScroll);
       return () => window.removeEventListener('scroll', handleScroll);
     }
-  }, [activeSection, currentView]);
+  }, [activeSection, currentView, isLoading]);
 
   // Handle project selection
   const handleProjectSelect = (projectId: number) => {
@@ -78,6 +93,17 @@ function App() {
     }, 100);
   };
 
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    setShowLoader(false);
+  };
+
+
+  // Prevent main website from rendering until loader is done
+  if (showLoader || isLoading) {
+    return <Loader onLoadingComplete={handleLoadingComplete} />;
+  }
+
   // if (currentView === 'admin') {
   //   return <AdminDashboard />;
   // }
@@ -88,6 +114,7 @@ function App() {
         <Header activeSection={activeSection} />
         <ProjectDetail projectId={selectedProject} onBack={handleBackToHome} />
         <Footer />
+        <Toaster />
       </div>
     );
   }
@@ -108,11 +135,15 @@ function App() {
         <section id='projects'>
           <Projects onProjectSelect={handleProjectSelect} />
         </section>
+        {/* <section id='timeline'>
+          <Timeline />
+        </section> */}
         <section id='contact'>
           <Contact />
         </section>
       </main>
       <Footer />
+      <Toaster />
     </div>
   );
 }
