@@ -126,7 +126,7 @@ export function ProjectHero({ project, onBack }: ProjectHeroProps) {
                     className="flex items-center space-x-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-xl transition-all shadow-lg text-lg font-medium"
                   >
                     <Play size={20} />
-                    <span>Live Demo</span>
+                    <span>Live </span>
                   </motion.a>
                   <motion.a
                     whileHover={{ scale: 1.05, y: -3, boxShadow: "0 20px 40px rgba(156, 163, 175, 0.3)" }}
@@ -356,7 +356,7 @@ export function ProjectHero({ project, onBack }: ProjectHeroProps) {
                 className="flex items-center space-x-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-all shadow-lg hover:shadow-blue-500/25"
               >
                 <Play size={18} />
-                <span>Live Demo</span>
+                <span>Live </span>
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.05, y: -2 }}
@@ -470,7 +470,7 @@ export function ProjectLiveDemo({ project }: ProjectLiveDemoProps) {
       transition={{ duration: 0.8, delay: 0.8 }}
       className="bg-gray-800/70 backdrop-blur-sm pt-2 p-6 mt-6 lg:mt-0 rounded-xl border border-gray-700"
     >
-      {project.live && !iframeError && !iframeTimeout ? (
+      {project.liveDemo && !iframeError && !iframeTimeout ? (
         <>
           <div className="flex items-center space-x-2 mb-2">
             <motion.div
@@ -505,7 +505,7 @@ export function ProjectLiveDemo({ project }: ProjectLiveDemoProps) {
             )}
             <div className="relative w-full h-64 overflow-hidden">
               <iframe
-                src={project.live}
+                src={project.liveDemo}
                 title={`${project.title} live preview`}
                 className="w-full h-64 object-cover transition-transform duration-500 absolute z-20 top-0 left-0"
                 style={{

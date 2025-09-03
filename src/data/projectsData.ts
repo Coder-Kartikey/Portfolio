@@ -44,6 +44,7 @@ export interface ProjectData {
   tags: string[];
   github: string;
   live: string;
+  liveDemo?: string;
   icon: any;
   timeline: string;
   team: string;
@@ -115,6 +116,7 @@ export const projectsData: Record<number, ProjectData> = {
     tags: ["Python", "FastAPI", "LangChain", "Gemini", "RAG", "Vector Database", "Faiss", "BM25"],
     github: "https://github.com/Coder-Kartikey/HACKRX6.0-1",
     live: "https://hackrx-bajaj-api.onrender.com/docs",
+    liveDemo: "https://hackrx-bajaj-api.onrender.com/docs",
     icon: Brain,
     timeline: "Hackathon Project",
     team: "Solo Contribution",
@@ -197,8 +199,7 @@ export const projectsData: Record<number, ProjectData> = {
     animatedPreview: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2RtaHhlZnZidmR2OXlscHk3dDVoaDk2bHV1Z3p6aW9wOWJmaHczNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L8yQ02hI2w5sQ/giphy.gif",
     tags: ["Python", "TensorFlow", "Keras", "OpenCV", "NumPy", "Deep Learning", "CNN"],
     github: "https://github.com/Coder-Kartikey/Forest_Fire_Detection_using_DL",
-    live: "",
-    // https://colab.research.google.com/drive/1EsyB40L9MNr62ahhmZXAaC_f1hLIrIvi?usp=sharing
+    live: "https://colab.research.google.com/drive/1ugrVWwZfleiuaGTRFmLWQE07k_d987Jv?usp=sharing",
     icon: Brain,
     timeline: "2 Weeks",
     team: "Individual Project",
@@ -274,8 +275,8 @@ export const projectsData: Record<number, ProjectData> = {
     animatedPreview: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Zua3dha3Nwc3BzaDExcm5kZzh6cGl4Mnl4dW40aWJ3dHJucHhkaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VbPG1c33d2Soo/giphy.gif",
     tags: ["Python", "Streamlit", "Gemini", "Generative AI", "API", "UI/UX", "Pandas"],
     github: "https://github.com/Coder-Kartikey/SmartContent-Studio",
-    // live: "https://smartcontent-studio.streamlit.app/?embed_options=dark_theme",
     live: "https://coder-kp-smartcontent-studio.hf.space",
+    liveDemo: "https://coder-kp-smartcontent-studio.hf.space",
     icon: Code,
     timeline: "2 Weeks",
     team: "Team Project",
@@ -352,7 +353,8 @@ export const projectsData: Record<number, ProjectData> = {
     animatedPreview: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Zua3dha3Nwc3BzaDExcm5kZzh6cGl4Mnl4dW40aWJ3dHJucHhkaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VbPG1c33d2Soo/giphy.gif",
     tags: ["Python", "OpenCV", "NumPy", "Steganography", "Algorithms", "Cyber Security"],
     github: "https://github.com/Coder-Kartikey/InvisiData",
-    live: "",
+    live: "https://invisi-data.onrender.com",
+    liveDemo: "https://invisi-data.onrender.com",
     icon: TbLockCode,
     timeline: "1 Week",
     team: "Individual Project",
@@ -430,6 +432,7 @@ export const projectsData: Record<number, ProjectData> = {
     tags: ["Node.js", "Express.js", "MongoDB", "EJS", "Bootstrap", "MVC", "RESTful APIs"],
     github: "https://github.com/Coder-Kartikey/WonderLust",
     live: "https://wonderlust-o9ym.onrender.com/",
+    liveDemo: "https://wonderlust-o9ym.onrender.com/",
     icon: Code,
     timeline: "1 Month",
     team: "Individual Project",
