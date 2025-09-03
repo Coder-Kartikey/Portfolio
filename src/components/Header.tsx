@@ -41,8 +41,9 @@ export default function Header( { activeSection }: HeaderProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div
+          <motion.button
             whileHover={{ scale: 1.05 }}
+            onClick={() => scrollToSection('home')}
             className="flex items-center space-x-3"
           >
             <div className="relative">
@@ -66,7 +67,7 @@ export default function Header( { activeSection }: HeaderProps) {
               />
             </div>
             <span className="text-xl text-white">CoderKP</span>
-          </motion.div>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
