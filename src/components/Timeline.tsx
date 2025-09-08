@@ -69,26 +69,26 @@ export default function Timeline() {
         color: 'from-purple-500 to-pink-500',
         bgColor: 'bg-purple-500/10'
       },
-      {
-        id: '2',
-        category: 'leadership',
-        type: 'Leadership',
-        title: 'Organizer, SIH 2025',
-        organization: 'Smart India Hackathon',
-        location: 'College Campus',
-        duration: 'Ongoing',
-        status: 'ongoing',
-        description: 'Leading the organization of our college\'s internal Smart India Hackathon. My responsibilities include coordinating teams, mentoring participants on project ideation, and managing the overall event logistics.',
-        achievements: [
-          'Leading the largest technical event on campus',
-          'Mentoring 20+ student teams',
-          'Coordinating with faculty and judges'
-        ],
-        skills: ['Leadership', 'Project Management', 'Mentoring'],
-        icon: Users,
-        color: 'from-indigo-500 to-purple-500',
-        bgColor: 'bg-indigo-500/10'
-      },
+      // {
+      //   id: '2',
+      //   category: 'leadership',
+      //   type: 'Leadership',
+      //   title: 'Organizer, SIH 2025',
+      //   organization: 'Smart India Hackathon',
+      //   location: 'College Campus',
+      //   duration: 'Ongoing',
+      //   status: 'ongoing',
+      //   description: 'Leading the organization of our college\'s internal Smart India Hackathon. My responsibilities include coordinating teams, mentoring participants on project ideation, and managing the overall event logistics.',
+      //   achievements: [
+      //     'Leading the largest technical event on campus',
+      //     'Mentoring 20+ student teams',
+      //     'Coordinating with faculty and judges'
+      //   ],
+      //   skills: ['Leadership', 'Project Management', 'Mentoring'],
+      //   icon: Users,
+      //   color: 'from-indigo-500 to-purple-500',
+      //   bgColor: 'bg-indigo-500/10'
+      // },
       {
         id: '3',
         category: 'training',
